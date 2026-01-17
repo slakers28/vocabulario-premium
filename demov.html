@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulário Essencial em Inglês</title>
+	
+	<script src="https://cdn.tailwindcss.com"></script>
+    <style>
+	
+	{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* Garante que padding e bordas não aumentem o tamanho */
+    }
+        body {
+            background: linear-gradient(to bottom, #f7f7f7 0%, #e0e0e0 100%);
+        }
+        
+        .gradient-bg {
+            /* NOVO: Header em gradiente cinza escuro para acompanhar o tema */
+            background: linear-gradient(135deg, #091a3f 0%, #2a5298 40%, #BF0A30 100%); 
+			margin-top: 0 !important;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .word-card {
+            transition: all 0.3s ease;
+        }
+
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Classe para o botão de áudio */
+        .audio-button:hover {
+            background-color: #3182CE; /* blue-600 */
+        }
+		
+		/* Estilo para os ícones do alfabeto */
+        .alphabet-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: #60a5fa;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .alphabet-icon:hover {
+            transform: scale(1.1);
+        }
+		
+		
+		/* Adicione este bloco DENTRO da sua tag <style> */
+.audio-button-small {
+    /* Cor de fundo cinza claro (Tailwind bg-gray-200) */
+    background-color: #e5e7eb;
+    /* Cor do ícone (Tailwind text-gray-700) */
+    color: #374151;
+    /* Tamanho do botão (p-2 é menor que o p-3 anterior) */
+    padding: 0.5rem; 
+    /* Garante que o hover seja discreto */
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-sm */
+}
+
+.audio-button-small:hover {
+    /* Cinza um pouco mais escuro (Tailwind hover:bg-gray-300) */
+    background-color: #d1d5db; 
+    color: #111827; /* Icone quase preto */
+    transform: scale(1.05); /* Pequeno efeito ao passar o mouse */
+}
+		
+/* --- ESTILOS DO JOGO DA MEMÓRIA --- */
+        .perspective {
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        /* Classe que será aplicada via JS para virar a carta */
+        .is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    padding: 10px; /* Aumentei um pouco o respiro interno */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    word-break: break-word; /* Faz a quebra de linha correta em frases grandes */
+    overflow: hidden; /* Garante que nada saia dos limites da borda */
+}
+
+        /* Frente da carta (O "interrogação") */
+        .card-front {
+            background-color: #1e3a8a; /* Azul escuro */
+            color: white;
+            font-size: 1.5rem;
+            border: 2px solid #3b82f6;
+        }
+
+        /* Verso da carta (O conteúdo escondido) */
+        .card-back {
+            background-color: white;
+            color: #1e3a8a;
+            transform: rotateY(180deg);
+            border: 2px solid #e5e7eb;
+            font-size: 0.85rem;
+            line-height: 1.2;
+        }
+
+        /* Quando o par é encontrado */
+        .matched .card-back {
+            background-color: #d1fae5 !important; /* Verde claro */
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+        }
+
+</style>
+</head>
+<body class="font-sans">
+<nav id="fixedNavbar" class="gradient-bg text-white shadow-xl fixed w-full z-20 top-0 p-2 hidden">
+    <div class="flex items-center justify-between max-w-7xl mx-auto">
+        
+        <h2 class="text-lg font-bold">Vocabulário Essencial</h2>
+        
+        <div class="flex items-center space-x-3">
+            
+            <button id="pomodoroBtnFixed" onclick="togglePomodoroUI()"
+                class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1.5 px-3 rounded-md text-xs transition duration-150 shadow-sm flex items-center gap-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Pomodoro</span>
+            </button>
+            
+            <button id="gameBtn" onclick="abrirMenuJogo()" 
+                class="hidden bg-[#FFFF10] hover:bg-[#F2F210] text-black font-bold py-1.5 px-3 rounded-md text-xs transition duration-150 shadow-sm flex items-center gap-1.5">
+                <span>🎮</span> <span>Memória</span>
+            </button>
+
+            <a href="demos.html" id="historyBtn" 
+    class="hidden bg-[#007BFF] hover:bg-[#0069d9] text-white font-bold py-1.5 px-3 rounded-md text-xs transition duration-150 shadow-sm flex items-center gap-1.5 border-b-2 border-blue-800">
+    <span>📖</span> <span>Histórias</span>
+</a>
+            
+            <button id="backToCategoriesBtn" onclick="hideCategory()" 
+                class="hidden bg-gray-600 hover:bg-gray-700 text-white font-semibold py-1.5 px-3 rounded-md text-xs transition duration-150 shadow-sm flex items-center gap-1.5">
+                <span>←</span> <span>Categorias</span>
+            </button>
+            
+            <button id="scrollToTopBtn" onclick="scrollToTop()" 
+                class="hidden bg-gray-600 hover:bg-gray-700 text-white font-semibold py-1 px-2 rounded-full text-xs transition duration-150 shadow-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+            </button>
+            
+        </div>
+    </div>
+</nav>
+
+    <header class="gradient-bg text-white pt-16 pb-4 px-4" style="margin-top: 60px;">
+    <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Vocabulário Essencial <span class="text-green-400">em Inglês</span>
+        </h1>
+        <p class="text-xl opacity-90 mb-8">
+            Centenas de palavras organizadas por categoria para fluência completa!
+        </p>
+		<p class="text-xl opacity-90 mb-8">
+            Clique na categoria NOUNS e verás o botão: História, lá contém os 110 cards com as 682 Narrativas dessa edição Premium.
+        </p>
+        <p class="text-xs opacity-70 mt-4 mb-0 font-medium">
+            🇧🇷  Por: Ricardo Pereira - Smart App - 2025  🇺🇸
+        </p>
+    </div>
+</header>
+
+
+<div class="fixed bottom-4 right-4 z-50 flex flex-col gap-3 items-center">
+
+
+    
+<div id="categoryNavigation" class="fixed bottom-6 left-6 hidden flex-col gap-2 z-40">
+    <button onclick="navigateCategory('next')" 
+        class="bg-white/80 backdrop-blur-sm hover:bg-white text-blue-600 rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center border border-white/50" 
+        style="width: 35px; height: 35px;" title="Próxima Categoria">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;">
+            <path fill-rule="evenodd" d="M11.47 7.72a.75.75 0 011.06 0l7.5 7.5a.75.75 0 11-1.06 1.06L12 9.31l-6.94 6.97a.75.75 0 01-1.06-1.06l7.5-7.5z" transform="rotate(90 12 12)" clip-rule="evenodd" />
+        </svg>
+    </button>
+    
+    <button onclick="navigateCategory('prev')" 
+        class="bg-white/80 backdrop-blur-sm hover:bg-white text-blue-600 rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center border border-white/50" 
+        style="width: 35px; height: 35px;" title="Categoria Anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;">
+            <path fill-rule="evenodd" d="M11.47 7.72a.75.75 0 011.06 0l7.5 7.5a.75.75 0 11-1.06 1.06L12 9.31l-6.94 6.97a.75.75 0 01-1.06-1.06l7.5-7.5z" transform="rotate(-90 12 12)" clip-rule="evenodd" />
+        </svg>
+    </button>
+</div>
+    
+    <button id="backToTopBtn" onclick="scrollToTop()" 
+        class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center" 
+        style="display: none; width: 35px; height: 35px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path fill-rule="evenodd" d="M11.47 2.47a.75.75 0 011.06 0l7.5 7.5a.75.75 0 11-1.06 1.06l-6.22-6.22V21a.75.75 0 01-1.5 0V4.81l-6.22 6.22a.75.75 0 11-1.06-1.06l7.5-7.5z" clip-rule="evenodd" />
+        </svg>
+    </button>
+
+    <div id="pomodoro-toggle-btn" 
+        class="bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg transition duration-300 cursor-pointer flex items-center justify-center" 
+        style="width: 35px; height: 35px;"
+        onclick="togglePomodoroUI()">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+    </div>
+
+</div>
+
+    <div id="pomodoro-container" class="fixed top-4 left-4 z-50 rounded-lg p-2 shadow-lg border border-red-200 bg-gradient-to-r from-red-100 to-pink-100 hidden">
+        <div class="flex justify-between items-start mb-3">
+            <h3 id="pomodoro-title" class="text-sm font-bold text-red-800">Foco (25:00)</h3>
+            <button class="text-red-500 hover:text-red-800 text-lg leading-none ml-2" onclick="togglePomodoroUI()">×</button>
+        </div>
+
+        <div class="bg-red-50 rounded-lg p-2 mb-2 text-center border border-red-200">
+             <p id="pomodoro-time" class="text-3xl font-mono mb-1 text-red-700">25:00</p>
+             <p id="pomodoro-status" class="text-xs text-red-600">Pronto para começar a estudar!</p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 justify-center">
+            <button id="start-pause-btn" class="text-xs px-2 py-0.5 w-24 flex justify-center bg-green-100 hover:bg-green-200 text-green-800 rounded-md font-semibold transition-colors border border-green-300" onclick="startPausePomodoro()">
+                ▶️ Iniciar Foco
+            </button>
+            <button class="text-xs px-2 py-0.5 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-md font-semibold transition-colors border border-gray-300" onclick="resetPomodoro()">
+                🔄 Resetar
+            </button>
+        </div>
+        <div class="flex justify-center mt-2">
+             <button id="short-break-btn" class="text-xs px-2 py-0.5 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-md font-semibold transition-colors border border-blue-300" onclick="setShortBreak(true)">
+                ☕ Pausa Curta (5 min)
+            </button>
+        </div>
+    </div>
+
+
+    <section id="grammaticalCategories" class="py-8 px-4 bg-gray-100 shadow-inner">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Categorias Gramaticais</h2>
+            <p class="text-gray-600 mb-8 text-center">Com simples cliques, aprenda palavras e memorize frases</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <button onclick="showCategory('nouns')" class="bg-blue-100 hover:bg-blue-200 text-center py-4 px-3 rounded-lg transition-colors duration-300 border-2 border-blue-200 hover:border-blue-300">
+                    <div class="font-bold text-blue-800 text-lg mb-1">NOUNS</div>
+                    <div class="text-blue-600 text-sm">Substantivos</div>
+                </button>
+                
+                <button onclick="showCategory('verbs')" class="bg-green-100 hover:bg-green-200 text-center py-4 px-3 rounded-lg transition-colors duration-300 border-2 border-green-200 hover:border-green-300">
+                    <div class="font-bold text-green-800 text-lg mb-1">VERBS</div>
+                    <div class="text-green-600 text-sm">Verbos</div>
+                </button>
+                
+                <button onclick="showCategory('adjectives')" class="bg-purple-100 hover:bg-purple-200 text-center py-4 px-3 rounded-lg transition-colors duration-300 border-2 border-purple-200 hover:border-purple-300">
+                    <div class="font-bold text-purple-800 text-lg mb-1">ADJECTIVES</div>
+                    <div class="text-purple-600 text-sm">Adjetivos</div>
+                </button>
+                
+                <button onclick="showCategory('adverbs')" class="bg-orange-100 hover:bg-orange-200 text-center py-4 px-3 rounded-lg transition-colors duration-300 border-2 border-orange-200 hover:border-orange-300">
+                    <div class="font-bold text-orange-800 text-lg mb-1">ADVERBS</div>
+                    <div class="text-orange-600 text-sm">Advérbios</div>
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="showCategory('pronouns')" class="bg-pink-100 hover:bg-pink-200 text-center py-4 px-3 rounded-lg transition-colors duration-300 border-2 border-pink-200 hover:border-pink-300">
+                    <div class="font-bold text-pink-800 text-lg mb-1">PRONOUNS</div>
+                    <div class="text-pink-600 text-sm">Pronomes</div>
+                </button>
+                
+                <button onclick="showCategory('prepositions')" class="bg-teal-100 hover:bg-teal-200 text-center py-4 px-3 rounded-lg transition-colors duration-300 border-2 border-teal-200 hover:border-teal-300">
+                    <div class="font-bold text-teal-800 text-lg mb-1">PREPOSITIONS</div>
+                    <div class="text-teal-600 text-sm">Preposições</div>
+                </button>
+                
+                <button onclick="showCategory('conjunctions')" class="bg-indigo-100 hover:bg-indigo-200 text-center py-4 px-3 rounded-lg transition-colors duration-300 border-2 border-indigo-200 hover:border-indigo-300">
+                    <div class="font-bold text-indigo-800 text-lg mb-1">CONJUNCTIONS</div>
+                    <div class="text-indigo-600 text-sm">Conjunções</div>
+                </button>
+                
+                <button onclick="showCategory('interjections')" class="bg-red-100 hover:bg-red-200 text-center py-4 px-3 rounded-lg transition-colors duration-300 border-2 border-red-200 hover:border-red-300">
+                    <div class="font-bold text-red-800 text-lg mb-1">INTERJECTIONS</div>
+                    <div class="text-red-600 text-sm">Interjeições</div>
+                </button>
+            </div>
+        </div>
+    </section>
+	
+	   
+    <section id="specificCategories" class="py-8 px-4 bg-gradient-to-r from-gray-50 to-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Categorias Específicas</h2>
+			<p class="text-gray-600 mb-8 text-center">Vocabulário organizado por temas do dia a dia</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+			<button 
+                onclick="showSpecificCategory('alphabet')" 
+                class="bg-gradient-to-r from-blue-100 to-indigo-100 hover:from-blue-200 hover:to-indigo-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-blue-200 hover:border-blue-300 transform hover:scale-105"
+            >
+                <div class="text-3xl mb-2">🔠</div>
+                <div class="font-bold text-indigo-800 text-sm mb-1">ALFABETO</div>
+                <div class="text-indigo-600 text-xs">Pronúncia</div>
+            </button>
+			<button 
+                onclick="showSpecificCategory('colors')" 
+                class="bg-gradient-to-r from-yellow-100 to-red-100 hover:from-yellow-200 hover:to-red-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-yellow-300 hover:border-yellow-400 transform hover:scale-105"
+            >
+                <div class="text-3xl mb-2">🎨</div>
+                <div class="font-bold text-yellow-800 text-sm mb-1">CORES</div>
+                <div class="text-yellow-600 text-xs">Tons e Pigmentos</div>
+            </button>
+
+            <button onclick="showSpecificCategory('family')" class="bg-gradient-to-r from-pink-100 to-rose-100 hover:from-pink-200 hover:to-rose-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-pink-200 hover:border-pink-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">👨‍👩‍👧‍👦</div>
+                <div class="font-bold text-pink-800 text-sm mb-1">FAMÍLIA</div>
+                <div class="text-pink-600 text-xs">Relacionamentos</div>
+            </button>
+            
+            <button onclick="showSpecificCategory('home')" class="bg-gradient-to-r from-green-100 to-emerald-100 hover:from-green-200 hover:to-emerald-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-green-200 hover:border-green-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">🏠</div>
+                <div class="font-bold text-green-800 text-sm mb-1">CASA</div>
+                <div class="text-green-600 text-xs">Objetos Domésticos</div>
+            </button>		
+            
+            
+            <button 
+                onclick="showSpecificCategory('education')" 
+                class="bg-gradient-to-r from-blue-100 to-white hover:from-blue-200 hover:to-gray-100 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-blue-300 hover:border-blue-400 transform hover:scale-105"
+            >
+                <div class="text-3xl mb-2">📚</div>
+                <div class="font-bold text-blue-900 text-sm mb-1">EDUCAÇÃO</div>
+                <div class="text-blue-800 text-xs">Fases, Cargos e Estudos</div>
+            </button>
+            
+            <button onclick="showSpecificCategory('work')" class="bg-gradient-to-r from-blue-100 to-indigo-100 hover:from-blue-200 hover:to-indigo-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-blue-200 hover:border-blue-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">💼</div>
+                <div class="font-bold text-blue-800 text-sm mb-1">TRABALHO</div>
+                <div class="text-blue-600 text-xs">Profissões</div>
+            </button>
+            
+            
+
+            <button onclick="showSpecificCategory('food')" class="bg-gradient-to-r from-yellow-100 to-orange-100 hover:from-yellow-200 hover:to-orange-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-yellow-200 hover:border-yellow-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">🍽️</div>
+                <div class="font-bold text-yellow-800 text-sm mb-1">ALIMENTOS</div>
+                <div class="text-yellow-600 text-xs">Bebidas</div>
+            </button>
+
+            <button onclick="showSpecificCategory('travel')" class="bg-gradient-to-r from-cyan-100 to-blue-100 hover:from-cyan-200 hover:to-blue-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-cyan-200 hover:border-cyan-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">✈️</div>
+                <div class="font-bold text-cyan-800 text-sm mb-1">VIAGENS</div>
+                <div class="text-cyan-600 text-xs">Transportes</div>
+            </button>
+
+            <button onclick="showSpecificCategory('emotions')" class="bg-gradient-to-r from-red-100 to-pink-100 hover:from-red-200 hover:to-pink-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-red-200 hover:border-red-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">❤️</div>
+                <div class="font-bold text-red-800 text-sm mb-1">SENTIMENTOS</div>
+                <div class="text-red-600 text-xs">Emoções</div>
+            </button>
+
+            <button onclick="showSpecificCategory('hobbies')" class="bg-gradient-to-r from-purple-100 to-indigo-100 hover:from-purple-200 hover:to-indigo-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-purple-200 hover:border-purple-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">🎨</div>
+                <div class="font-bold text-purple-800 text-sm mb-1">AÇÕES</div>
+                <div class="text-purple-600 text-xs">Hobbies</div>
+            </button>
+
+            <button onclick="showSpecificCategory('money')" class="bg-gradient-to-r from-green-100 to-teal-100 hover:from-green-200 hover:to-teal-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-green-200 hover:border-green-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">💰</div>
+                <div class="font-bold text-green-800 text-sm mb-1">DINHEIRO</div>
+                <div class="text-green-600 text-xs">Compras</div>
+            </button>
+
+            <button onclick="showSpecificCategory('countries')" class="bg-gradient-to-r from-indigo-100 to-purple-100 hover:from-indigo-200 hover:to-purple-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-indigo-200 hover:border-indigo-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">🌍</div>
+                <div class="font-bold text-indigo-800 text-sm mb-1">PAÍSES</div>
+                <div class="text-indigo-600 text-xs">Nacionalidades</div>
+            </button>
+
+            <button onclick="showSpecificCategory('animals')" class="bg-gradient-to-r from-orange-100 to-red-100 hover:from-orange-200 hover:to-red-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-orange-200 hover:border-orange-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">🐾</div>
+                <div class="font-bold text-orange-800 text-sm mb-1">ANIMAIS</div>
+                <div class="text-orange-600 text-xs">Domésticos e Selvagens</div>
+            </button>
+            
+            <button onclick="showSpecificCategory('fruits_and_vegetables')" 
+                class="bg-gradient-to-r from-green-100 to-yellow-100 hover:from-green-200 hover:to-yellow-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-green-200 hover:border-green-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">🍎🥗</div>
+                <div class="font-bold text-green-800 text-sm mb-1">FRUTAS E LEGUMES</div>
+                <div class="text-green-600 text-xs">Frutas & Vegetais</div>
+            </button>
+
+            <button onclick="showSpecificCategory('sports')" class="bg-gradient-to-r from-teal-100 to-cyan-100 hover:from-teal-200 hover:to-cyan-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-teal-200 hover:border-teal-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">⚽</div>
+                <div class="font-bold text-teal-800 text-sm mb-1">ESPORTES</div>
+                <div class="text-teal-600 text-xs">Atividades</div>
+            </button>
+
+            <button onclick="showSpecificCategory('technology')" class="bg-gradient-to-r from-gray-100 to-slate-100 hover:from-gray-200 hover:to-slate-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-gray-200 hover:border-gray-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">💻</div>
+                <div class="font-bold text-gray-800 text-sm mb-1">TECNOLOGIA</div>
+                <div class="text-gray-600 text-xs">Digital</div>
+            </button>
+
+            <button onclick="showSpecificCategory('numbers')" class="bg-gradient-to-r from-violet-100 to-purple-100 hover:from-violet-200 hover:to-purple-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-violet-200 hover:border-violet-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">🔢</div>
+                <div class="font-bold text-violet-800 text-sm mb-1">NÚMEROS</div>
+                <div class="text-violet-600 text-xs">Matemática</div>
+            </button>
+            
+            
+            <button onclick="showSpecificCategory('clothes')" class="bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-gray-300 hover:border-gray-400 transform hover:scale-105">
+                <div class="text-3xl mb-2">👚</div>
+                <div class="font-bold text-gray-800 text-sm mb-1">ROUPAS</div>
+                <div class="text-gray-600 text-xs">Vestuário</div>
+            </button>
+            
+            <button onclick="showSpecificCategory('body_parts')"
+                class="bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-blue-200 hover:border-blue-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">💪🧠</div>
+                <div class="font-bold text-blue-800 text-sm mb-1">PARTES DO CORPO</div>
+                <div class="text-blue-600 text-xs">Body Parts</div>
+            </button>
+            
+            <button 
+                onclick="showSpecificCategory('health')" 
+                class="bg-gradient-to-r from-red-100 to-red-200 hover:from-red-200 hover:to-red-300 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-red-300 hover:border-red-400 transform hover:scale-105"
+            >
+                <div class="text-3xl mb-2">🏥</div>
+                <div class="font-bold text-red-800 text-sm mb-1">SAÚDE</div>
+                <div class="text-red-600 text-xs">Emergência</div>
+            </button>
+
+            <button 
+                onclick="showSpecificCategory('weather')" 
+                class="bg-gradient-to-r from-teal-100 to-cyan-100 hover:from-teal-200 hover:to-cyan-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-cyan-300 hover:border-cyan-400 transform hover:scale-105"
+            >
+                <div class="text-3xl mb-2">☀️</div>
+                <div class="font-bold text-teal-800 text-sm mb-1">CLIMA</div>
+                <div class="text-teal-600 text-xs">Previsão e Estações</div>
+            </button>
+
+
+            <button 
+                onclick="showSpecificCategory('time')" 
+                class="bg-gradient-to-r from-blue-100 to-indigo-100 hover:from-blue-200 hover:to-indigo-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-blue-300 hover:border-blue-400 transform hover:scale-105"
+            >
+                <div class="text-3xl mb-2">⏰</div>
+                <div class="font-bold text-blue-800 text-sm mb-1">TEMPO</div>
+                <div class="text-blue-600 text-xs">Horas e Momentos</div>
+            </button>
+
+            <button 
+                onclick="showSpecificCategory('religion')" 
+                class="bg-gradient-to-r from-blue-100 to-white hover:from-blue-200 hover:to-gray-100 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-blue-300 hover:border-blue-400 transform hover:scale-105"
+            >
+                <div class="text-3xl mb-2">🙏</div>
+                <div class="font-bold text-red-800 text-sm mb-1">RELIGIÃO</div>
+                <div class="text-blue-800 text-xs">Crenças e Cultos</div>
+            </button>
+
+            <button onclick="showSpecificCategory('essential_phrases')"
+                class="bg-gradient-to-r from-blue-100 to-indigo-100 hover:from-blue-200 hover:to-indigo-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-blue-200 hover:border-blue-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">💬🗣️</div>
+                <div class="font-bold text-indigo-800 text-sm mb-1">FRASES ESSENCIAIS</div>
+                <div class="text-indigo-600 text-xs">Saudações e Cumprimentos</div>
+            </button>
+
+            <button onclick="showSpecificCategory('phrasal_verbs')"
+                class="bg-gradient-to-r from-red-100 to-yellow-100 hover:from-red-200 hover:to-yellow-200 text-center py-6 px-4 rounded-xl transition-all duration-300 border-2 border-red-200 hover:border-red-300 transform hover:scale-105">
+                <div class="text-3xl mb-2">🗣️🔗</div>
+                <div class="font-bold text-red-800 text-sm mb-1">VERBOS FRASAIS</div>
+                <div class="text-red-600 text-xs">Frases com Verbos</div>
+            </button>
+            </div>
+						
+            </div>
+            
+            <div class="text-center mt-8">
+                <p class="text-gray-600 mb-4">💡 <strong>Palavras principais e extras destacadas em negrito!</strong></p>
+                <p class="text-sm text-gray-500">Aprenda vocabulário extra através dos exemplos práticos</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="categorySection" class="py-8 px-4 bg-gray-200 hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 id="categoryTitle" class="text-3xl font-bold text-gray-800 mb-2"></h2>
+                <p id="categoryDescription" class="text-gray-600"></p>
+                <button onclick="hideCategory()" class="mt-4 bg-gray-600 hover:bg-gray-700 text-white px-6 py-1 rounded-lg transition-colors">
+                    ← Categorias
+                </button>
+            </div>
+            
+            <div id="categoryCards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+        </div>
+    </section>
+
+    <script>
+	
+	// =================================================================
+// FUNÇÕES DE ÁUDIO
+// =================================================================
+
+let currentVocabAudio = null; // Âncora global para o áudio
+
+// Função para rolar a tela suavemente para o topo
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// =================================================================
+// NOVO: Listener de Scroll para o botão 'Voltar ao Topo'
+// =================================================================
+
+window.addEventListener('scroll', function() {
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    if (window.scrollY > 300) { // Mostra o botão após rolar 300 pixels
+        scrollToTopBtn.classList.remove('hidden');
+    } else {
+        scrollToTopBtn.classList.add('hidden');
+    }
+}
+
+);
+
+
+
+
+function normalizeWordForAudio(text) {
+    // 1. Remove tags HTML (como <strong>) de frases de exemplo
+    let cleanedText = text.replace(/<[^>]*>/g, ''); 
+    
+    // 2. Troca barras (/) por dois sublinhados (__)
+    // Isto lida com casos como 'plane / airplane'
+    let normalized = cleanedText.replace(/\s\/\s/g, '__');
+    
+    // 3. Troca todos os ESPAÇOS por um sublinhado (_)
+    normalized = normalized.replace(/ /g, '_');
+    
+    // 4. Remove pontuações comuns (vírgulas, pontos finais, etc.)
+    normalized = normalized.replace(/[.,;?!]/g, ''); 
+    
+    // 5. Converte para minúsculas para garantir a correspondência com o nome do arquivo
+    normalized = normalized.toLowerCase();
+
+    return normalized;
+}
+
+// Função 1: Versão com normalização complexa
+function playAudio(textToNormalize) {
+    // Para o som anterior antes de começar o novo
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+        window.currentVocabAudio.currentTime = 0;
+    }
+
+    const normalizedName = normalizeWordForAudio(textToNormalize);
+    const audioPath = `audio/${normalizedName}.mp3`;
+    
+    // Registra o áudio na variável global window
+    window.currentVocabAudio = new Audio(audioPath);
+    window.currentVocabAudio.playbackRate = 0.9; 
+    
+    window.currentVocabAudio.play().catch(error => {
+        console.error("Erro ao tentar tocar o áudio de: " + textToNormalize, error);
+    });
+}
+
+// =================================================================
+// FIM DAS FUNÇÕES DE ÁUDIO
+// =================================================================
+	
+	
+	
+	
+	
+        // ============== CÓDIGO DE ÁUDIO ==============
+        // Função 2: Versão padrão de áudio
+function playAudio(word) {
+    // Para o som anterior antes de começar o novo
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+        window.currentVocabAudio.currentTime = 0;
+    }
+
+    const audioPath = 'audio/' + word.toLowerCase().replace(/\s/g, '_').replace(/'/g, '') + '.mp3';
+    
+    // Registra o áudio na variável global window
+    window.currentVocabAudio = new Audio(audioPath);
+
+    window.currentVocabAudio.onplay = () => {
+        window.currentVocabAudio.playbackRate = 0.9;
+    };
+
+    window.currentVocabAudio.play().catch(error => {
+        console.error(`Erro ao reproduzir o áudio para '${word}':`, error);
+    });
+}
+        // ==================================================
+
+        // Função para gerar os cards - AGORA CORRIGIDA COM LAYOUT UNIFICADO
+        function generateCards(data, categoryName) {
+            const cardsContainer = document.getElementById('categoryCards');
+            cardsContainer.innerHTML = ''; 
+            
+            const isAlphabet = categoryName === 'alphabet';
+
+            data.forEach(item => {
+                let cardHtml = '';
+                
+                // SVG do ícone de áudio (para evitar repetição)
+                const audioIconSvg = `
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 8a1 1 0 011-1h1l3.5-3.5a.5.5 0 01.854.354v11.308a.5.5 0 01-.854.354L7 13H6a1 1 0 01-1-1V8z" clip-rule="evenodd" />
+                        <path d="M15.5 9.5a1 1 0 010 1A3.5 3.5 0 0013 7.5a1 1 0 010-2 4.5 4.5 0 014.5 4.5zM17 9.5a.5.5 0 01-.5.5 5.5 5.5 0 00-5.5-5.5a.5.5 0 010-1A6.5 6.5 0 0117.5 10a.5.5 0 01-.5-.5z"/>
+                    </svg>`;
+
+                
+                // === LÓGICA DO CARD PADRÃO (USADA PARA QUASE TUDO) ===
+                // ... dentro da função generateCards(data, categoryName)
+// ...
+// === LÓGICA DO CARD PADRÃO (USADA PARA QUASE TUDO) ===
+if (!isAlphabet) {
+    // O texto da frase de exemplo pode conter tags <strong>.
+    // Usamos .replace(/<[^>]*>/g, '') para limpar o texto antes de passar para playAudio.
+    const exampleTextForAudio = item.example.replace(/<[^>]*>/g, '').replace(/'/g, '').replace(/"/g, "&quot;");
+    
+    cardHtml = `
+        <div class="text-left">
+            <div class="flex items-start justify-between mb-2">
+                <div class="flex flex-col items-start">
+                    <div class="text-3xl mb-1">${item.icon}</div> <p class="text-xs font-semibold text-gray-400 uppercase">${item.categoryType || categoryName}</p>
+                </div>
+
+                <button onclick="playAudio('${item.word.replace(/[?']/g, '').replace(/\s/g, '_')}')" class="audio-button bg-blue-500 text-white p-1 rounded-full shadow-md flex-shrink-0 hover:bg-blue-600 transition duration-150">
+    ${audioIconSvg}
+</button>
+            </div>
+
+            <h3 class="text-3xl font-extrabold text-gray-900 mb-1">${item.word}</h3>
+            
+            <p class="text-lg text-gray-700 mb-1">${item.translation}</p> 
+            
+            ${item.phonetic ? `<p class="text-base font-normal text-blue-500 mb-3">/${item.phonetic}/</p>` : ''}
+
+            <div class="mt-4 pt-4 border-t border-gray-100 text-left">
+                <p class="text-sm font-medium text-gray-500 mb-1">Exemplo:</p>
+                
+                <div class="flex items-start justify-between"> 
+                    <p class="text-sm text-gray-800 italic pr-2">${item.example}</p>
+                    
+                    <button 
+                        onclick="playAudio('${exampleTextForAudio.replace(/[?'&]/g, '').replace(/\s/g, '_')}')" 						
+                        class="audio-button audio-button-small p-1 rounded-full flex-shrink-0 mt-[-5px]"
+                        title="Ouvir Frase">
+                        ${audioIconSvg}
+                    </button>
+                </div>
+				
+				          
+                <p class="text-xs text-gray-500 mt-1">${item.examplePt}</p>
+            </div>
+        </div>
+    `;
+}
+// === FIM DA LÓGICA DO CARD PADRÃO ===
+// ...
+                // === LÓGICA DO CARD ALFABETO (MANTIDO) ===
+                else {
+    // 1. Variável para o texto do áudio (DEVE ser declarada aqui, antes da string HTML)
+    const exampleTextForAudio = item.example.replace(/<[^>]*>/g, '').replace(/'/g, '').replace(/"/g, "&quot;");
+
+    // 2. O conteúdo do card é definido com cardHtml = `...`
+    cardHtml = `
+        <div class="text-left">
+            <div class="flex items-start justify-between mb-2">
+                <div class="flex flex-col items-start">
+                    <div class="text-3xl mb-1">${item.icon}</div>
+                    <p class="text-xs font-semibold text-gray-400 uppercase">${item.categoryType || categoryName}</p>
+                </div>
+
+                <button onclick="playAudio('${item.word.replace(/\s/g, '_').replace(/'/g, '')}')" class="audio-button bg-blue-500 text-white p-1 rounded-full hover:bg-blue-600 transition duration-150 shadow-md flex-shrink-0">
+                    ${audioIconSvg}
+                </button>
+            </div>
+
+            <h3 class="text-3xl font-extrabold text-gray-900 mb-1">${item.word}</h3>
+            
+            <p class="text-xl font-semibold text-blue-700 mb-3">/${item.translation}/</p>
+
+            <div class="mt-4 pt-4 border-t border-gray-100 text-left">
+                <p class="text-sm font-medium text-gray-500 mb-1">Exemplo:</p>
+                
+                <div class="flex items-start justify-between"> 
+                    <p class="text-sm text-gray-800 italic pr-2">${item.example}</p>
+                    
+                    <button 
+                        onclick="playAudio('${exampleTextForAudio.replace(/[?'&]/g, '').replace(/\s/g, '_')}')"					
+						class="audio-button audio-button-small p-1 rounded-full flex-shrink-0 mt-[-5px]"
+                        title="Ouvir Frase">
+                        ${audioIconSvg}
+                    </button>
+                </div>
+                
+                <p class="text-xs text-gray-500 mt-1">${item.examplePt}</p>
+            </div>
+        </div>
+    `;
+}
+
+                const card = document.createElement('div');
+                card.className = `word-card fade-in p-6 rounded-xl shadow-lg bg-white border border-gray-100`;
+                card.innerHTML = cardHtml;
+                cardsContainer.appendChild(card);
+            });
+            
+            document.getElementById('categorySection').classList.remove('hidden');
+            document.getElementById('categorySection').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+		
+        // Complete word database - USANDO ESTRUTURA COMPLETA
+        const categoryData = {
+            nouns: {
+                title: 'SUBSTANTIVOS (NOUNS)',
+                description: 'As 100 palavras mais importantes para comunicação básica',
+				
+                words: [
+                    { word: 'person', translation: 'pessoa', icon: '👤', phonetic: 'pêrson', example: 'That <strong>person</strong> is very <strong>kind</strong>', examplePt: 'Essa pessoa é muito gentil', categoryType: 'NOUNS' },
+        { word: 'family', translation: 'família', icon: '👨‍👩‍👧‍👦', phonetic: 'fâmili', example: 'My <strong>family</strong> loves spending <strong>quality</strong> time together', examplePt: 'Minha família adora passar tempo de qualidade juntos', categoryType: 'NOUNS' },
+        { word: 'house', translation: 'casa', icon: '🏠', phonetic: 'háus', example: 'My <strong>house</strong> has a beautiful <strong>garden</strong>', examplePt: 'Minha casa tem um jardim bonito', categoryType: 'NOUNS' },
+        { word: 'school', translation: 'escola', icon: '🏫', phonetic: 'skul', example: 'I go to <strong>school</strong> every <strong>morning</strong>', examplePt: 'Eu vou à escola toda manhã', categoryType: 'NOUNS' },
+        { word: 'work', translation: 'trabalho', icon: '⚒️', phonetic: 'uêrk', example: '<strong>Work</strong> is <strong>necessary</strong> for success', examplePt: 'Trabalho é necessário para o sucesso', categoryType: 'NOUNS' },
+        { word: 'time', translation: 'tempo', icon: '⏰', phonetic: 'táim', example: '<strong>Time</strong> flies <strong>quickly</strong> when having fun', examplePt: 'O tempo voa rápido quando nos divertimos', categoryType: 'NOUNS' },
+        { word: 'water', translation: 'água', icon: '💧', phonetic: 'uóter', example: 'Drink more <strong>water</strong> for better <strong>health</strong>', examplePt: 'Beba mais água para melhor saúde', categoryType: 'NOUNS' },
+        { word: 'food', translation: 'comida', icon: '🍽️', phonetic: 'fud', example: 'The <strong>food</strong> is absolutely <strong>delicious</strong>', examplePt: 'A comida está absolutamente deliciosa', categoryType: 'NOUNS' },
+        { word: 'money', translation: 'dinheiro', icon: '💰', phonetic: 'mâni', example: '<strong>Money</strong> is <strong>important</strong> but not everything', examplePt: 'Dinheiro é importante mas não é tudo', categoryType: 'NOUNS' },
+        { word: 'car', translation: 'carro', icon: '🚗', phonetic: 'cár', example: 'My <strong>car</strong> is <strong>red</strong> and fast', examplePt: 'Meu carro é vermelho e rápido', categoryType: 'NOUNS' },
+        { word: 'book', translation: 'livro', icon: '📚', phonetic: 'buk', example: 'This <strong>book</strong> is very <strong>interesting</strong>', examplePt: 'Este livro é muito interessante', categoryType: 'NOUNS' },
+        { word: 'friend', translation: 'amigo', icon: '👫', phonetic: 'frênd', example: 'My <strong>friend</strong> is extremely <strong>funny</strong>', examplePt: 'Meu amigo é extremamente engraçado', categoryType: 'NOUNS' },
+        { word: 'city', translation: 'cidade', icon: '🏙️', phonetic: 'síti', example: 'The <strong>city</strong> is <strong>beautiful</strong> at night', examplePt: 'A cidade é bonita à noite', categoryType: 'NOUNS' },
+        { word: 'country', translation: 'país', icon: '🌍', phonetic: 'cãntri', example: 'My <strong>country</strong> is <strong>amazing</strong>', examplePt: 'Meu país é incrível', categoryType: 'NOUNS' },
+        { word: 'world', translation: 'mundo', icon: '🌎', phonetic: 'uôrld', example: 'The <strong>world</strong> is <strong>full</strong> of opportunities', examplePt: 'O mundo está cheio de oportunidades', categoryType: 'NOUNS' },
+        { word: 'life', translation: 'vida', icon: '🌱', phonetic: 'láif', example: '<strong>Life</strong> is <strong>beautiful</strong> and precious', examplePt: 'A vida é bonita e preciosa', categoryType: 'NOUNS' },
+        { word: 'day', translation: 'dia', icon: '☀️', phonetic: 'dêi', example: 'Today is a <strong>perfect</strong> <strong>day</strong>', examplePt: 'Hoje é um dia perfeito', categoryType: 'NOUNS' },
+        { word: 'night', translation: 'noite', icon: '🌙', phonetic: 'náit', example: 'Good <strong>night</strong> <strong>everyone</strong>', examplePt: 'Boa noite pessoal', categoryType: 'NOUNS' },
+        { word: 'morning', translation: 'manhã', icon: '🌅', phonetic: 'mórnin', example: 'Good <strong>morning</strong> dear <strong>class</strong>', examplePt: 'Bom dia querida turma', categoryType: 'NOUNS' },
+        { word: 'afternoon', translation: 'tarde', icon: '🌇', phonetic: 'áfternun', example: 'Good <strong>afternoon</strong> <strong>sir</strong>', examplePt: 'Boa tarde senhor', categoryType: 'NOUNS' },
+        { word: 'week', translation: 'semana', icon: '📅', phonetic: 'uik', example: 'This <strong>week</strong> is very <strong>busy</strong>', examplePt: 'Esta semana está muito corrida', categoryType: 'NOUNS' },
+        { word: 'basement', translation: 'porão', icon: '🏠', phonetic: 'bêisment', example: 'Let\'s <strong>go</strong> to the <strong>basement</strong>', examplePt: 'Vamos ao porão', categoryType: 'NOUNS' },
+        { word: 'attic', translation: 'sótão', icon: '🏠', phonetic: 'âtic', example: 'Please <strong>store</strong> this in the <strong>attic</strong>', examplePt: 'Por favor guarde isso no sótão', categoryType: 'NOUNS' }
+                ]
+            },
+			
+            verbs: {
+                title: 'VERBOS (VERBS)',
+                description: 'Verbos de ação e estado essenciais para montar frases',
+                words: [
+                   { word: 'be (in doubt)', translation: 'estar (em dúvida)', icon: '🤔', phonetic: 'bí', example: 'I <strong>am</strong> in </strong>doubt</strong> about the solution.', examplePt: 'Eu estou em dúvida sobre a solução.', categoryType: 'COMMON_VERBS' },
+{ word: 'have (problem)', translation: 'ter (problema)', icon: '⚠️', phonetic: 'rév', example: 'We <strong>have</strong> a </strong>serious</strong> problem to solve.', examplePt: 'Nós temos um problema sério para resolver.', categoryType: 'COMMON_VERBS' },
+{ word: 'do (favor)', translation: 'prestar (favor)', icon: '🤝', phonetic: 'dú', example: 'Can you <strong>do</strong> me a </strong>big</strong> favor?', examplePt: 'Você pode me prestar um grande favor?', categoryType: 'COMMON_VERBS' },
+{ word: 'say (greetings)', translation: 'dar (cumprimentos)', icon: '👋', phonetic: 'sêi', example: 'Please <strong>say</strong> my </strong>greetings</strong> to your family.', examplePt: 'Por favor, dê meus cumprimentos à sua família.', categoryType: 'COMMON_VERBS' },
+{ word: 'get (tired)', translation: 'ficar (cansado)', icon: '😩', phonetic: 'guét', example: 'I <strong>get</strong> very </strong>tired</strong> after work.', examplePt: 'Eu fico muito cansado depois do trabalho.', categoryType: 'COMMON_VERBS' },
+{ word: 'make (a mistake)', translation: 'cometer (erro)', icon: '❌', phonetic: 'mêik', example: 'I <strong>make</strong> a </strong>terrible</strong> mistake.', examplePt: 'Eu cometi um erro terrível.', categoryType: 'COMMON_VERBS' },
+{ word: 'go (to sleep)', translation: 'ir (dormir)', icon: '😴', phonetic: 'gôu', example: 'I <strong>go</strong> to </strong>sleep</strong> very late.', examplePt: 'Eu vou dormir muito tarde.', categoryType: 'COMMON_VERBS' },
+{ word: 'know (facts)', translation: 'saber (fatos)', icon: '🧠', phonetic: 'nôu', example: 'I <strong>know</strong> a </strong>lot</strong> of facts about history.', examplePt: 'Eu sei muitos fatos sobre história.', categoryType: 'COMMON_VERBS' },
+{ word: 'take (a photo)', translation: 'tirar (foto)', icon: '📸', phonetic: 'têik', example: 'Can you <strong>take</strong> a </strong>photo</strong> of us?', examplePt: 'Você pode tirar uma foto nossa?', categoryType: 'COMMON_VERBS' },
+{ word: 'see (future)', translation: 'prever (futuro)', icon: '🔮', phonetic: 'sí', example: 'I can <strong>see</strong> a </strong>bright</strong> future for you.', examplePt: 'Eu consigo prever um futuro brilhante para você.', categoryType: 'COMMON_VERBS' },
+{ word: 'come (back)', translation: 'voltar (regressar)', icon: '🔙', phonetic: 'câm', example: 'When will you <strong>come</strong> </strong>back</strong> from vacation?', examplePt: 'Quando você vai voltar das férias?', categoryType: 'COMMON_VERBS' },
+{ word: 'think (about)', translation: 'refletir sobre', icon: '🤔', phonetic: 'thínk', example: 'I need to <strong>think</strong> </strong>about</strong> your proposal.', examplePt: 'Eu preciso de tempo para refletir sobre sua proposta.', categoryType: 'COMMON_VERBS' },
+{ word: 'look (after)', translation: 'cuidar de', icon: '🍼', phonetic: 'lúk', example: 'Can you <strong>look</strong> </strong>after</strong> my cat this weekend?', examplePt: 'Você pode cuidar do meu gato neste fim de semana?', categoryType: 'COMMON_VERBS' },
+{ word: 'want (something)', translation: 'desejar (algo)', icon: '🌟', phonetic: 'uónt', example: 'I <strong>want</strong> a </strong>new</strong> car.', examplePt: 'Eu desejo um carro novo.', categoryType: 'COMMON_VERBS' },
+{ word: 'obtain (visa)', translation: 'tirar (visto)', icon: '🛂', phonetic: 'obtêin', example: 'I need to <strong>obtain</strong> a <strong>student</strong> visa.', examplePt: 'Eu preciso tirar um visto de estudante.', categoryType: 'COMMON_VERBS' },
+{ word: 'distribute (tasks)', translation: 'dividir (tarefas)', icon: '📋', phonetic: 'distríbiut', example: 'We need to <strong>distribute</strong> the <strong>tasks</strong> equally.', examplePt: 'Nós precisamos dividir as tarefas igualmente.', categoryType: 'COMMON_VERBS' },
+{ word: 'claim (responsibility)', translation: 'assumir (responsabilidade)', icon: '✅', phonetic: 'clêim', example: 'He <strong>claim</strong> <strong>responsibility</strong> for the outcome.', examplePt: 'Ele assumiu a responsabilidade pelo resultado.', categoryType: 'COMMON_VERBS' },
+{ word: 'depend (on result)', translation: 'estar sujeito ao (resultado)', icon: '🎯', phonetic: 'dipênd', example: 'The <strong>bonus</strong> will <strong>depend</strong> on the final result.', examplePt: 'O bônus estará sujeito ao resultado final.', categoryType: 'COMMON_VERBS' },
+{ word: 'enable (system)', translation: 'ativar (sistema)', icon: '⚙️', phonetic: 'enêibol', example: 'We will <strong>enable</strong> the <strong>new</strong> security system.', examplePt: 'Nós vamos ativar o novo sistema de segurança.', categoryType: 'COMMON_VERBS' },
+{ word: 'succeed (in mission)', translation: 'ter sucesso em (missão)', icon: '🚀', phonetic: 'sacsíid', example: 'They will <strong>succeed</strong> in their <strong>secret</strong> mission.', examplePt: 'Eles terão sucesso na missão secreta deles.', categoryType: 'COMMON_VERBS' },
+{ word: 'recognize (achievement)', translation: 'reconhecer (realização)', icon: '🏆', phonetic: 'récognaiz', example: 'We must <strong>recognize</strong> her <strong>major</strong> achievement.', examplePt: 'Nós devemos reconhecer a grande realização dela.', categoryType: 'COMMON_VERBS' },
+{ word: 'protect (secret)', translation: 'manter (segredo)', icon: '🤫', phonetic: 'protékt', example: 'You must <strong>protect</strong> this <strong>important</strong> secret.', examplePt: 'Você deve manter este segredo importante.', categoryType: 'COMMON_VERBS' },
+{ word: 'determine (price)', translation: 'definir (preço)', icon: '💰', phonetic: 'ditêrmin', example: 'We need to <strong>determine</strong> the <strong>maximum</strong> price.', examplePt: 'Nós precisamos definir o preço máximo.', categoryType: 'COMMON_VERBS' },
+{ word: 'prevent (loss)', translation: 'evitar (perda)', icon: '📉', phonetic: 'privént', example: 'Good <strong>planning</strong> will <strong>prevent</strong> any loss.', examplePt: 'Um bom planejamento irá evitar qualquer perda.', categoryType: 'COMMON_VERBS' } 
+           
+				   
+                ]
+            },
+			
+			
+            adjectives: {
+                title: 'ADJETIVOS (ADJECTIVES)',
+                description: 'Qualidades e características para descrever substantivos',
+                words: [
+                    { word: 'good', translation: 'bom', icon: '👍', phonetic: 'gud', example: 'This is a <strong>good</strong> <strong>book</strong>', examplePt: 'Este é um livro bom', categoryType: 'ADJECTIVES' },
+        { word: 'new', translation: 'novo', icon: '✨', phonetic: 'niu', example: 'I have a <strong>new</strong> <strong>car</strong>', examplePt: 'Eu tenho um carro novo', categoryType: 'ADJECTIVES' },
+        { word: 'old', translation: 'velho/antigo', icon: '🕰️', phonetic: 'ôuld', example: 'The <strong>old</strong> <strong>house</strong> is beautiful', examplePt: 'A casa antiga é bonita', categoryType: 'ADJECTIVES' },
+        { word: 'great', translation: 'ótimo/excelente', icon: '⭐', phonetic: 'grêit', example: 'That\'s a <strong>great</strong> <strong>idea</strong>!', examplePt: 'Essa é uma ideia ótima!', categoryType: 'ADJECTIVES' },
+        { word: 'high', translation: 'alto', icon: '⬆️', phonetic: 'rái', example: 'The <strong>high</strong> <strong>mountain</strong> is amazing', examplePt: 'A montanha alta é incrível', categoryType: 'ADJECTIVES' },
+        { word: 'small', translation: 'pequeno', icon: '🤏', phonetic: 'smól', example: 'I live in a <strong>small</strong> <strong>city</strong>', examplePt: 'Eu moro em uma cidade pequena', categoryType: 'ADJECTIVES' },
+        { word: 'friendly', translation: 'amigável', icon: '👋', phonetic: 'frêndli', example: 'The dog is <strong>friendly</strong> and <strong>playful</strong>', examplePt: 'O cachorro é amigável e brincalhão', categoryType: 'ADJECTIVES' },
+        { word: 'hostile', translation: 'hostil', icon: '😡', phonetic: 'róstáil', example: 'The environment was <strong>hostile</strong> and <strong>tense</strong>', examplePt: 'O ambiente estava hostil e tenso', categoryType: 'ADJECTIVES' },
+        { word: 'polite', translation: 'educado', icon: '🎩', phonetic: 'poláit', example: 'He is always very <strong>polite</strong> and <strong>respectful</strong>', examplePt: 'Ele é sempre muito educado e respeitoso', categoryType: 'ADJECTIVES' },
+        { word: 'rude', translation: 'rude', icon: '🖕', phonetic: 'rrud', example: 'Her behavior was <strong>rude</strong> and <strong>unacceptable</strong>', examplePt: 'O comportamento dela foi rude e inaceitável', categoryType: 'ADJECTIVES' }
+                ]
+            },
+            adverbs: {
+                title: 'ADVÉRBIOS (ADVERBS)',
+                description: 'Palavras que modificam verbos, adjetivos ou outros advérbios',
+                words: [
+                    { word: 'very', translation: 'muito', icon: '📈', phonetic: 'vêri', example: 'I am <strong>very</strong> <strong>happy</strong>', examplePt: 'Estou muito feliz', categoryType: 'ADVERBS' },
+        { word: 'just', translation: 'apenas/agora mesmo', icon: '➡️', phonetic: 'djast', example: 'I <strong>just</strong> <strong>arrived</strong>', examplePt: 'Acabei de chegar', categoryType: 'ADVERBS' },
+        { word: 'even', translation: 'até mesmo', icon: '➕', phonetic: 'íven', example: '<strong>Even</strong> <strong>I</strong> know that', examplePt: 'Até eu sei disso', categoryType: 'ADVERBS' },
+        { word: 'well', translation: 'bem', icon: '👍', phonetic: 'uél', example: 'She sings <strong>well</strong>', examplePt: 'Ela canta bem', categoryType: 'ADVERBS' },
+        { word: 'then', translation: 'então', icon: '🔜', phonetic: 'dhên', example: 'We ate, <strong>then</strong> we <strong>left</strong>', examplePt: 'Nós comemos, então nós saímos', categoryType: 'ADVERBS' },
+        { word: 'out', translation: 'fora', icon: '🚪', phonetic: 'aut', example: 'Go <strong>out</strong>', examplePt: 'Saia', categoryType: 'ADVERBS' },
+        { word: 'indoors', translation: 'dentro de casa', icon: '🏠', phonetic: 'indoors', example: 'Let\'s stay <strong>indoors</strong>', examplePt: 'Vamos ficar dentro de casa', categoryType: 'ADVERBS' },
+        { word: 'outdoors', translation: 'fora de casa', icon: '🌳', phonetic: 'outdoors', example: 'Let\'s go <strong>outdoors</strong>', examplePt: 'Vamos para fora de casa', categoryType: 'ADVERBS' }
+                ]
+            },
+			
+			
+            pronouns: {
+                title: 'PRONOMES (PRONOUNS)',
+                description: 'Palavras que substituem ou acompanham substantivos',
+                words: [
+                    { word: 'I', translation: 'eu', icon: '👤', phonetic: 'ái', example: '<strong>I</strong> am a <strong>student</strong>', examplePt: 'Eu sou um estudante', categoryType: 'PRONOUNS' },
+{ word: 'you', translation: 'você/vocês', icon: '👥', phonetic: 'iu', example: '<strong>You</strong> are <strong>kind</strong>', examplePt: 'Você é gentil', categoryType: 'PRONOUNS' },
+{ word: 'he', translation: 'ele', icon: '👨', phonetic: 'rrí', example: '<strong>He</strong> works <strong>here</strong>', examplePt: 'Ele trabalha aqui', categoryType: 'PRONOUNS' },
+{ word: 'she', translation: 'ela', icon: '👩', phonetic: 'shí', example: '<strong>She</strong> sings <strong>well</strong>', examplePt: 'Ela canta bem', categoryType: 'PRONOUNS' },
+{ word: 'it', translation: 'ele/ela (neutro)', icon: '📦', phonetic: 'it', example: '<strong>It</strong> is a <strong>book</strong>', examplePt: 'É um livro', categoryType: 'PRONOUNS' },
+{ word: 'we', translation: 'nós', icon: '🤝', phonetic: 'uí', example: '<strong>We</strong> are <strong>friends</strong>', examplePt: 'Nós somos amigos', categoryType: 'PRONOUNS' },
+{ word: 'they', translation: 'eles/elas', icon: '👨‍👩‍👧', phonetic: 'dhêi', example: '<strong>They</strong> left <strong>early</strong>', examplePt: 'Eles saíram cedo', categoryType: 'PRONOUNS' },
+{ word: 'me', translation: 'me/mim', icon: '🙋', phonetic: 'mí', example: 'Give <strong>me</strong> the <strong>book</strong>', examplePt: 'Dê-me o livro', categoryType: 'PRONOUNS' },
+{ word: 'him', translation: 'lhe/o/ele', icon: '👨', phonetic: 'rrim', example: 'Tell <strong>him</strong> to <strong>come</strong>', examplePt: 'Diga a ele para vir', categoryType: 'PRONOUNS' },
+{ word: 'one', translation: 'um/uma (genérico)', icon: '1️⃣', phonetic: 'uân', example: 'If <strong>one</strong> tries <strong>hard</strong>, one succeeds', examplePt: 'Se a pessoa se esforça, ela tem sucesso', categoryType: 'PRONOUNS' },
+{ word: 'many', translation: 'muitos/muitas', icon: '🔢', phonetic: 'mêni', example: 'I have <strong>many</strong> <strong>books</strong>', examplePt: 'Eu tenho muitos livros', categoryType: 'PRONOUNS' },
+{ word: 'much', translation: 'muito (incontável)', icon: '⚖️', phonetic: 'mâtch', example: 'I don\'t have <strong>much</strong> <strong>time</strong>', examplePt: 'Eu não tenho muito tempo', categoryType: 'PRONOUNS' },
+{ word: 'few', translation: 'poucos/as', icon: '🤏', phonetic: 'fiu', example: 'I have <strong>few</strong> <strong>friends</strong> here', examplePt: 'Eu tenho poucos amigos aqui', categoryType: 'PRONOUNS' },
+{ word: 'little', translation: 'pouco (incontável)', icon: '💧', phonetic: 'lítol', example: 'I have <strong>little</strong> <strong>money</strong> left', examplePt: 'Eu tenho pouco dinheiro restante', categoryType: 'PRONOUNS' }
+                ]
+            },
+			
+			
+            prepositions: {
+                title: 'PREPOSIÇÕES (PREPOSITIONS)',
+                description: 'Palavras que indicam posição, tempo, direção, etc.',
+                words: [
+                    { word: 'in', translation: 'em/dentro', icon: '🏠', phonetic: 'in', example: 'The <strong>book</strong> is <strong>in</strong> the bag', examplePt: 'O livro está na bolsa', categoryType: 'PREPOSITIONS' },
+{ word: 'on', translation: 'em/sobre', icon: '📋', phonetic: 'on', example: 'The <strong>cup</strong> is <strong>on</strong> the table', examplePt: 'A xícara está na mesa', categoryType: 'PREPOSITIONS' },
+{ word: 'at', translation: 'em/no', icon: '📍', phonetic: 'át', example: '<strong>I</strong> am <strong>at</strong> home', examplePt: 'Estou em casa', categoryType: 'PREPOSITIONS' },
+{ word: 'to', translation: 'para', icon: '➡️', phonetic: 'tu', example: 'I go <strong>to</strong> <strong>school</strong>', examplePt: 'Vou para a escola', categoryType: 'PREPOSITIONS' },
+{ word: 'from', translation: 'de/desde', icon: '⬅️', phonetic: 'frôm', example: 'I <strong>come</strong> <strong>from</strong> Brazil', examplePt: 'Venho do Brasil', categoryType: 'PREPOSITIONS' },
+{ word: 'with', translation: 'com', icon: '🤝', phonetic: 'uíth', example: '<strong>Come</strong> <strong>with</strong> me', examplePt: 'Venha comigo', categoryType: 'PREPOSITIONS' },
+{ word: 'without', translation: 'sem', icon: '🚫', phonetic: 'uitháut', example: 'I can\'t <strong>live</strong> <strong>without</strong> you', examplePt: 'Não posso viver sem você', categoryType: 'PREPOSITIONS' },
+{ word: 'along', translation: 'ao longo de', icon: '🛤️', phonetic: 'alóng', example: '<strong>Walk</strong> <strong>along</strong> the beach', examplePt: 'Caminhe ao longo da praia', categoryType: 'PREPOSITIONS' },
+{ word: 'beyond', translation: 'além de', icon: '🌌', phonetic: 'biiónd', example: 'The <strong>future</strong> is <strong>beyond</strong> our sight', examplePt: 'O futuro está além da nossa vista', categoryType: 'PREPOSITIONS' },
+{ word: 'opposite', translation: 'oposto a', icon: '🔀', phonetic: 'ópozit', example: 'The <strong>store</strong> is <strong>opposite</strong> the park', examplePt: 'A loja é oposta ao parque', categoryType: 'PREPOSITIONS' }
+                ]
+            },
+			
+			
+            conjunctions: {
+                title: 'CONJUNÇÕES (CONJUNCTIONS)',
+                description: 'Palavras que ligam frases ou orações',
+                words: [
+                    { word: 'and', translation: 'e', icon: '➕', phonetic: 'end', example: 'I like <strong>coffee</strong> <strong>and</strong> tea', examplePt: 'Eu gosto de café e chá', categoryType: 'CONJUNCTIONS' },
+{ word: 'but', translation: 'mas', icon: '❌', phonetic: 'bât', example: 'It is <strong>good</strong> <strong>but</strong> expensive', examplePt: 'É bom mas caro', categoryType: 'CONJUNCTIONS' },
+{ word: 'or', translation: 'ou', icon: '❓', phonetic: 'ôr', example: 'Do you prefer <strong>red</strong> <strong>or</strong> blue?', examplePt: 'Você prefere vermelho ou azul?', categoryType: 'CONJUNCTIONS' },
+{ word: 'so', translation: 'então/portanto', icon: '➡️', phonetic: 'sou', example: 'It was <strong>late</strong>, <strong>so</strong> I left', examplePt: 'Estava tarde, então eu saí', categoryType: 'CONJUNCTIONS' },
+{ word: 'because', translation: 'porque', icon: '💡', phonetic: 'bícâz', example: 'I <strong>came</strong> <strong>because</strong> I want to learn', examplePt: 'Eu vim porque quero aprender', categoryType: 'CONJUNCTIONS' },
+{ word: 'once', translation: 'assim que', icon: '✅', phonetic: 'uâns', example: '<strong>Once</strong> I <strong>finish</strong>, I will call you', examplePt: 'Assim que eu terminar, eu te ligo', categoryType: 'CONJUNCTIONS' },
+{ word: 'though', translation: 'embora/apesar de', icon: '🔄', phonetic: 'dhôu', example: 'She <strong>smiled</strong>, <strong>though</strong> she was sad', examplePt: 'Ela sorriu, embora estivesse triste', categoryType: 'CONJUNCTIONS' }
+                ]
+            },
+						
+            interjections: {
+                title: 'INTERJEIÇÕES (INTERJECTIONS)',
+                description: 'Expressões de emoção ou sentimento',
+                words: [
+                    { word: 'oh', translation: 'oh', icon: '😮', phonetic: 'ôu', example: '<strong>Oh</strong>, I <strong>forgot</strong>!', examplePt: 'Oh, esqueci!', categoryType: 'INTERJECTIONS' },
+{ word: 'wow', translation: 'uau', icon: '🤩', phonetic: 'uáu', example: '<strong>Wow</strong>, that\'s <strong>amazing</strong>!', examplePt: 'Uau, isso é incrível!', categoryType: 'INTERJECTIONS' },
+{ word: 'hey', translation: 'ei', icon: '👋', phonetic: 'rrei', example: '<strong>Hey</strong>, <strong>come</strong> here!', examplePt: 'Ei, venha aqui!', categoryType: 'INTERJECTIONS' },
+{ word: 'oops', translation: 'opa', icon: '😬', phonetic: 'úps', example: '<strong>Oops</strong>, I <strong>dropped</strong> it', examplePt: 'Opa, eu deixei cair', categoryType: 'INTERJECTIONS' },
+{ word: 'yuck', translation: 'eca', icon: '🤢', phonetic: 'iâk', example: '<strong>Yuck</strong>, I <strong>hate</strong> this food!', examplePt: 'Eca, eu odeio essa comida!', categoryType: 'INTERJECTIONS' },
+{ word: 'alas', translation: 'ai de mim', icon: '😔', phonetic: 'álas', example: '<strong>Alas</strong>, the <strong>hero</strong> died', examplePt: 'Ai de mim, o herói morreu', categoryType: 'INTERJECTIONS' },
+{ word: 'yippee', translation: 'eebaa', icon: '🎉', phonetic: 'iípí', example: '<strong>Yippee</strong>! Summer <strong>vacation</strong> is here!', examplePt: 'Eebaa! As férias de verão chegaram!', categoryType: 'INTERJECTIONS' },
+{ word: 'psst', translation: 'psst', icon: '👂', phonetic: 'psst', example: '<strong>Psst</strong>, <strong>come</strong> over here', examplePt: 'Psst, venha aqui', categoryType: 'INTERJECTIONS' },
+{ word: 'oho', translation: 'oho', icon: '😮', phonetic: 'ôu-rrôu', example: '<strong>Oho</strong>, <strong>what</strong> have we here?', examplePt: 'Oho, o que temos aqui?', categoryType: 'INTERJECTIONS' }
+                ]
+            },
+					
+            
+            
+        };
+
+        // Dados para categorias específicas (specificCategoryData)
+        const specificCategoryData = {
+            alphabet: {
+                title: 'O ALFABETO (THE ALPHABET)',
+                description: 'Aprenda a pronúncia correta de cada letra',
+                words: [
+                    { word: 'A', translation: 'ei', icon: '<span class="alphabet-icon">A</span>', example: '<strong>A</strong> is for <strong>apple</strong>.', examplePt: 'A é para maçã.', categoryType: 'ALFABET' },
+                    { word: 'B', translation: 'bi', icon: '<span class="alphabet-icon">B</span>', example: '<strong>B</strong> is for <strong>ball</strong>.', examplePt: 'B é para bola.', categoryType: 'ALFABET' },
+                    { word: 'C', translation: 'ci', icon: '<span class="alphabet-icon">C</span>', example: '<strong>C</strong> is for <strong>cat</strong>.', examplePt: 'C é para gato.', categoryType: 'ALFABET' },
+                    { word: 'D', translation: 'di', icon: '<span class="alphabet-icon">D</span>', example: '<strong>D</strong> is for <strong>dog</strong>.', examplePt: 'D é para cachorro.', categoryType: 'ALFABET' },
+                    { word: 'E', translation: 'i', icon: '<span class="alphabet-icon">E</span>', example: '<strong>E</strong> is for <strong>elephant</strong>.', examplePt: 'E é para elefante.', categoryType: 'ALFABET' },
+                    { word: 'F', translation: 'éf', icon: '<span class="alphabet-icon">F</span>', example: '<strong>F</strong> is for <strong>fish</strong>.', examplePt: 'F é para peixe.', categoryType: 'ALFABET' },
+                    { word: 'Y', translation: 'uai', icon: '<span class="alphabet-icon">Y</span>', example: '<strong>Y</strong> is for <strong>yellow</strong>.', examplePt: 'Y é para amarelo.', categoryType: 'ALFABET' },
+                    { word: 'Z', translation: 'zi / zed', icon: '<span class="alphabet-icon">Z</span>', example: '<strong>Z</strong> is for <strong>zebra</strong>.', examplePt: 'Z é para zebra.', categoryType: 'ALFABET' }
+                ]
+            },
+            colors: {
+                title: 'CORES (COLORS)',
+                description: 'Tons e Pigmentos essenciais do dia a dia',
+                words: [
+                    // Cores Primárias e Secundárias
+{ word: 'red', translation: 'vermelho', icon: '🔴', phonetic: 'réd', example: 'The <strong>stop</strong> sign is <strong>red</strong>.', examplePt: 'O sinal de pare é vermelho.', categoryType: 'COLORS' },
+{ word: 'blue', translation: 'azul', icon: '🔵', phonetic: 'blúu', example: 'The <strong>sky</strong> is clear and <strong>blue</strong>.', examplePt: 'O céu está limpo e azul.', categoryType: 'COLORS' },
+{ word: 'yellow', translation: 'amarelo', icon: '🟡', phonetic: 'iélou', example: 'The <strong>sun</strong> is bright <strong>yellow</strong>.', examplePt: 'O sol é de um amarelo brilhante.', categoryType: 'COLORS' },
+{ word: 'green', translation: 'verde', icon: '🟢', phonetic: 'gríin', example: 'The <strong>grass</strong> is a <strong>vibrant</strong> green.', examplePt: 'A grama é um verde vibrante.', categoryType: 'COLORS' },
+{ word: 'orange', translation: 'laranja', icon: '🟠', phonetic: 'órindj', example: 'I like the <strong>color</strong> <strong>orange</strong>.', examplePt: 'Eu gosto da cor laranja.', categoryType: 'COLORS' },
+{ word: 'gold', translation: 'dourado', icon: '🥇', phonetic: 'gôuld', example: 'The <strong>ring</strong> is made of <strong>gold</strong>.', examplePt: 'O anel é feito de ouro.', categoryType: 'COLORS' },
+{ word: 'silver', translation: 'prateado', icon: '🥈', phonetic: 'sîlvâr', example: 'She <strong>bought</strong> a <strong>silver</strong> necklace.', examplePt: 'Ela comprou um colar prateado.', categoryType: 'COLORS' },
+{ word: 'bronze', translation: 'bronze', icon: '🥉', phonetic: 'brónz', example: 'He won the <strong>bronze</strong> <strong>medal</strong>.', examplePt: 'Ele ganhou a medalha de bronze.', categoryType: 'COLORS' },
+{ word: 'colorful', translation: 'colorido', icon: '🎨', phonetic: 'cólârfuul', example: 'The <strong>painting</strong> is very <strong>colorful</strong>.', examplePt: 'A pintura é muito colorida.', categoryType: 'COLORS' }
+                ]
+            },
+            family: {
+                title: 'FAMÍLIA (FAMILY)',
+                description: 'Vocabulário sobre Relacionamentos e Parentes',
+                words: [
+                    { word: 'mother', translation: 'mãe', icon: '👩', phonetic: 'máder', example: 'My <strong>mother</strong> is very <strong>kind</strong>', examplePt: 'Minha mãe é muito gentil', categoryType: 'FAMILY' },
+{ word: 'father', translation: 'pai', icon: '👨', phonetic: 'fáder', example: 'My <strong>father</strong> works <strong>hard</strong>', examplePt: 'Meu pai trabalha duro', categoryType: 'FAMILY' },
+{ word: 'parents', translation: 'pais', icon: '👨‍👩', phonetic: 'pérêntis', example: 'I <strong>love</strong> my <strong>parents</strong> a lot', examplePt: 'Eu amo muito meus pais', categoryType: 'FAMILY' },
+{ word: 'daughter', translation: 'filha', icon: '👧', phonetic: 'dórer', example: 'My <strong>daughter</strong> is <strong>smart</strong>', examplePt: 'Minha filha é inteligente', categoryType: 'FAMILY' },
+{ word: 'son', translation: 'filho', icon: '👦', phonetic: 'sãn', example: 'My <strong>son</strong> is <strong>playing</strong> now', examplePt: 'Meu filho está brincando agora', categoryType: 'FAMILY' },
+{ word: 'children', translation: 'crianças/filhos', icon: '👶', phonetic: 'tchíldren', example: 'The <strong>children</strong> are <strong>happy</strong>', examplePt: 'As crianças estão felizes', categoryType: 'FAMILY' },
+{ word: 'brother', translation: 'irmão', icon: '🧑', phonetic: 'bróder', example: 'My <strong>brother</strong> is <strong>older</strong> than me', examplePt: 'Meu irmão é mais velho que eu', categoryType: 'FAMILY' },
+{ word: 'relationship', translation: 'relacionamento', icon: '❤️', phonetic: 'rilêichonship', example: 'They have a <strong>strong</strong> <strong>relationship</strong>', examplePt: 'Eles têm um relacionamento forte', categoryType: 'FAMILY' },
+{ word: 'love', translation: 'amor', icon: '❤️', phonetic: 'lãv', example: 'I feel a <strong>lot</strong> of <strong>love</strong> for my family', examplePt: 'Eu sinto muito amor pela minha família', categoryType: 'FAMILY' },
+{ word: 'trust', translation: 'confiança', icon: '🤝', phonetic: 'trãst', example: '<strong>Trust</strong> is the <strong>base</strong> of any relationship', examplePt: 'Confiança é a base de qualquer relacionamento', categoryType: 'FAMILY' }
+                ]
+            },
+            home: {
+                title: 'CASA (HOME)',
+                description: 'Vocabulário sobre Objetos e Cômodos Domésticos',
+                words: [
+                    { word: 'house', translation: 'casa (estrutura)', icon: '🏠', phonetic: 'ráus', example: 'My <strong>house</strong> has three <strong>bedrooms</strong>', examplePt: 'Minha casa tem três quartos', categoryType: 'HOME' },
+{ word: 'home', translation: 'casa (lar)', icon: '🏡', phonetic: 'rroum', example: 'There is <strong>no</strong> place like <strong>home</strong>.', examplePt: 'Não há lugar como o lar.', categoryType: 'HOME' },
+{ word: 'apartment', translation: 'apartamento', icon: '🏢', phonetic: 'apártment', example: 'I live in a small <strong>apartment</strong> in the <strong>city</strong>', examplePt: 'Eu moro em um apartamento pequeno na cidade', categoryType: 'HOME' },
+{ word: 'building', translation: 'prédio', icon: '🏢', phonetic: 'bíldin', example: 'That is the <strong>tallest</strong> <strong>building</strong> in the city.', examplePt: 'Aquele é o prédio mais alto da cidade.', categoryType: 'HOME' },
+{ word: 'street', translation: 'rua', icon: '🛣️', phonetic: 'strít', example: 'The <strong>store</strong> is on this <strong>street</strong>.', examplePt: 'A loja fica nesta rua.', categoryType: 'HOME' },
+{ word: 'entrance', translation: 'entrada', icon: '➡️', phonetic: 'entrâns', example: 'The <strong>main</strong> <strong>entrance</strong> is on the left.', examplePt: 'A entrada principal é na esquerda.', categoryType: 'HOME' },
+{ word: 'exit', translation: 'saída', icon: '⬅️', phonetic: 'éxsit', example: '<strong>Look</strong> for the emergency <strong>exit</strong>.', examplePt: 'Procure a saída de emergência.', categoryType: 'HOME' },
+{ word: 'door', translation: 'porta', icon: '🚪', phonetic: 'dór', example: 'Close the <strong>door</strong> <strong>please</strong>', examplePt: 'Feche a porta por favor', categoryType: 'HOME' },
+{ word: 'window', translation: 'janela', icon: '🪟', phonetic: 'uíndou', example: 'Open the <strong>window</strong> for some fresh <strong>air</strong>', examplePt: 'Abra a janela para um pouco de ar fresco', categoryType: 'HOME' },
+{ word: 'kitchen', translation: 'cozinha', icon: '🍳', phonetic: 'kítchen', example: 'The <strong>kitchen</strong> is very <strong>modern</strong>', examplePt: 'A cozinha é muito moderna', categoryType: 'HOME' },
+{ word: 'bathroom', translation: 'banheiro', icon: '🛁', phonetic: 'béf rrúm', example: 'The <strong>bathroom</strong> needs to be <strong>cleaned</strong>', examplePt: 'O banheiro precisa ser limpo', categoryType: 'HOME' },
+{ word: 'bedroom', translation: 'quarto de dormir', icon: '🛏️', phonetic: 'béd rum', example: 'My <strong>bedroom</strong> is <strong>upstairs</strong>', examplePt: 'Meu quarto fica no andar de cima', categoryType: 'HOME' },
+{ word: 'bottle', translation: 'garrafa', icon: '🍾', phonetic: 'bórou', example: '<strong>Drink</strong> from the <strong>water</strong> bottle.', examplePt: 'Beba da garrafa de água.', categoryType: 'HOME' },
+{ word: 'cup', translation: 'taça/copo (geral)', icon: '☕', phonetic: 'câp', example: 'He <strong>drank</strong> a <strong>hot</strong> cup of tea.', examplePt: 'Ele bebeu uma xícara quente de chá.', categoryType: 'HOME' },
+{ word: 'basket', translation: 'cesta', icon: '🧺', phonetic: 'básquet', example: '<strong>Put</strong> the <strong>dirty</strong> clothes in the basket.', examplePt: 'Coloque as roupas sujas na cesta.', categoryType: 'HOME' }
+                ]
+            },
+			
+			education: { 
+                title: 'EDUCAÇÃO (EDUCATION)',
+                description: 'Vocabulário sobre fases, cargos e estudos',
+                words: [
+                    // PESSOAL E CARGOS
+{ word: 'teacher', translation: 'professor(a)', icon: '👩‍🏫', phonetic: 'tíitcher', example: 'The <strong>teacher</strong> explained the <strong>lesson</strong> clearly.', examplePt: 'O professor explicou a lição claramente.', categoryType: 'EDUCATION' },
+{ word: 'student', translation: 'estudante/aluno(a)', icon: '👨‍🎓', phonetic: 'stiúdent', example: 'The <strong>new</strong> <strong>student</strong> is from Spain.', examplePt: 'O novo aluno é da Espanha.', categoryType: 'EDUCATION' },
+{ word: 'principal', translation: 'diretor(a)', icon: '👔', phonetic: 'príncipal', example: 'The <strong>principal</strong> gave a <strong>speech</strong>.', examplePt: 'O diretor fez um discurso.', categoryType: 'EDUCATION' },
+{ word: 'vice-principal', translation: 'vice-diretor(a)', icon: '🤵', phonetic: 'váis príncipal', example: 'The <strong>vice-principal</strong> handles <strong>discipline</strong>.', examplePt: 'O vice-diretor lida com a disciplina.', categoryType: 'EDUCATION' },
+{ word: 'curriculum', translation: 'currículo', icon: '📃', phonetic: 'currícúlum', example: 'They are <strong>updating</strong> the school <strong>curriculum</strong>.', examplePt: 'Eles estão atualizando o currículo escolar.', categoryType: 'EDUCATION' },
+{ word: 'internship', translation: 'estágio', icon: '💼', phonetic: 'intêrnship', example: 'I am <strong>looking</strong> for an <strong>internship</strong> this summer.', examplePt: 'Eu estou procurando por um estágio neste verão.', categoryType: 'EDUCATION' },
+{ word: 'alumni', translation: 'ex-alunos', icon: '🧑‍🤝‍🧑', phonetic: 'alumnai', example: 'The <strong>alumni</strong> <strong>association</strong> organizes events.', examplePt: 'A associação de ex-alunos organiza eventos.', categoryType: 'EDUCATION' }
+                ]
+            },
+			
+			
+            work: {
+                title: 'TRABALHO (WORK)',
+                description: 'Vocabulário sobre Profissões e Ambiente de Trabalho',
+                words: [
+                    { word: 'job', translation: 'emprego', icon: '💼', phonetic: 'djóbi', example: 'I am looking for a <strong>new</strong> <strong>job</strong>', examplePt: 'Estou procurando um novo emprego', categoryType: 'WORK' },
+{ word: 'work', translation: 'trabalho (atividade)', icon: '⚒️', phonetic: 'uêrk', example: 'My <strong>work</strong> is very <strong>challenging</strong>', examplePt: 'Meu trabalho é muito desafiador', categoryType: 'WORK' },
+{ word: 'office', translation: 'escritório', icon: '🏢', phonetic: 'ófiss', example: 'I go to the <strong>office</strong> <strong>every</strong> day', examplePt: 'Eu vou para o escritório todos os dias', categoryType: 'WORK' },
+{ word: 'banker', translation: 'Banqueiro', icon: ' 🏦', phonetic: 'bênquer', example: 'He <strong>works</strong> as an <strong>investment</strong> banker.', examplePt: 'Ele trabalha como banqueiro de investimentos.', categoryType: 'WORK' },
+{ word: 'scientist', translation: 'Cientista', icon: ' 🧪', phonetic: 'sáiêntist', example: 'A <strong>scientist</strong> <strong>works</strong> in a laboratory.', examplePt: 'Um cientista trabalha em um laboratório.', categoryType: 'WORK' },
+{ word: 'dancer', translation: 'Dançarino', icon: ' 💃', phonetic: 'dêncer', example: 'She is a <strong>professional</strong> <strong>ballet</strong> dancer.', examplePt: 'Ela é uma dançarina de balé profissional.', categoryType: 'WORK' },
+{ word: 'photographer', translation: 'Fotógrafo', icon: ' 📸', phonetic: 'fotógrâfer', example: 'We <strong>hired</strong> a <strong>wedding</strong> photographer.', examplePt: 'Nós contratamos um fotógrafo de casamentos.', categoryType: 'WORK' },
+{ word: 'team', translation: 'Equipe', icon: ' 🧑‍🤝‍🧑', phonetic: 'tíim', example: 'We <strong>need</strong> to <strong>work</strong> as a team.', examplePt: 'Nós precisamos trabalhar em equipe.', categoryType: 'WORK' }
+                ]
+            },
+            food: {
+                title: 'ALIMENTOS (FOOD)',
+                description: 'Vocabulário sobre Comidas e Bebidas',
+                words: [
+                    // **Refeições**
+{ word: 'breakfast', translation: 'Café da Manhã', icon: '🍳', phonetic: 'bréquifest', example: 'I <strong>eat</strong> <strong>eggs</strong> for breakfast.', examplePt: 'Eu como ovos no café da manhã.', categoryType: 'FOOD' },
+{ word: 'lunch', translation: 'Almoço', icon: '🍽️', phonetic: 'lantch', example: 'What are we <strong>having</strong> for <strong>lunch</strong>?', examplePt: 'O que teremos no almoço?', categoryType: 'FOOD' },
+{ word: 'snack', translation: 'Lanche', icon: '🥨', phonetic: 'isnaqui', example: 'I <strong>need</strong> a <strong>quick</strong> snack.', examplePt: 'Eu preciso de um lanche rápido.', categoryType: 'FOOD' },
+{ word: 'dinner', translation: 'Jantar', icon: '🍲', phonetic: 'dainer', example: 'We have <strong>dinner</strong> at <strong>7</strong> pm.', examplePt: 'Nós jantaremos às 19h.', categoryType: 'FOOD' },
+{ word: 'dessert', translation: 'sobremesa', icon: '🍰', phonetic: 'disért', example: 'What do we <strong>have</strong> for <strong>dessert</strong>?', examplePt: 'O que temos de sobremesa?', categoryType: 'FOOD' },
+
+// **Bebidas**
+{ word: 'water', translation: 'água', icon: '💧', phonetic: 'uórer', example: '<strong>Drink</strong> more <strong>water</strong> please', examplePt: 'Beba mais água por favor', categoryType: 'FOOD' },
+{ word: 'juice', translation: 'suco', icon: '🥤', phonetic: 'djús', example: 'I want a <strong>glass</strong> of <strong>orange</strong> juice', examplePt: 'Eu quero um copo de suco de laranja', categoryType: 'FOOD' },
+{ word: 'coffee', translation: 'café', icon: '☕', phonetic: 'cófi', example: 'I <strong>drink</strong> <strong>coffee</strong> every morning', examplePt: 'Eu bebo café todas as manhãs', categoryType: 'FOOD' },
+{ word: 'tea', translation: 'chá', icon: '🍵', phonetic: 'tí', example: 'I <strong>prefer</strong> <strong>herbal</strong> tea.', examplePt: 'Eu prefiro chá de ervas.', categoryType: 'FOOD' },
+{ word: 'soda (soft drink)', translation: 'refrigerante', icon: '🥤', phonetic: 'sôuda / soft drinque', example: 'I <strong>rarely</strong> drink <strong>soda</strong>.', examplePt: 'Eu raramente bebo refrigerante.', categoryType: 'FOOD' },
+{ word: 'beer', translation: 'cerveja', icon: '🍺', phonetic: 'bír', example: 'He prefers <strong>cold</strong> <strong>beer</strong>', examplePt: 'Ele prefere cerveja gelada', categoryType: 'FOOD' },
+{ word: 'wine', translation: 'vinho', icon: '🍷', phonetic: 'uáin', example: '<strong>Red</strong> <strong>wine</strong> goes well with meat', examplePt: 'Vinho tinto combina bem com carne', categoryType: 'FOOD' }
+                ]
+            },
+            travel: {
+                title: 'VIAGENS (TRAVEL)',
+                description: 'Vocabulário sobre Transportes e Locais',
+                words: [
+                    // **Viagem e Documentação**
+{ word: 'travel', translation: 'viajar', icon: '✈️', phonetic: 'trável', example: 'I love to <strong>travel</strong> to new <strong>countries</strong>', examplePt: 'Eu amo viajar para novos países', categoryType: 'TRAVEL' },
+{ word: 'trip (journey)', translation: 'viagem/jornada', icon: '🗺️', phonetic: 'tríp / djúrni', example: 'We are <strong>planning</strong> a weekend <strong>trip</strong>.', examplePt: 'Estamos planejando uma viagem de fim de semana. / Eu tive uma longa viagem.', categoryType: 'TRAVEL' },
+{ word: 'vacation', translation: 'férias', icon: '🏝️', phonetic: 'vaquêichân', example: 'I will be on <strong>vacation</strong> next <strong>month</strong>', examplePt: 'Eu estarei de férias no próximo mês', categoryType: 'TRAVEL' },
+{ word: 'passport', translation: 'passaporte', icon: '🛂', phonetic: 'péssport', example: 'Don\'t <strong>forget</strong> your <strong>passport</strong>', examplePt: 'Não se esqueça do seu passaporte', categoryType: 'TRAVEL' },
+{ word: 'traffic', translation: 'tráfego', icon: '🚦', phonetic: 'tréfic', example: 'The <strong>traffic</strong> is <strong>heavy</strong> today', examplePt: 'O tráfego está pesado hoje', categoryType: 'TRAVEL' },
+{ word: 'tourist', translation: 'turista', icon: '📸', phonetic: 'túrist', example: 'I saw many <strong>tourists</strong> in the <strong>city</strong> center', examplePt: 'Eu vi muitos turistas no centro da cidade', categoryType: 'TRAVEL' },
+{ word: 'sightseeing', translation: 'passeio turístico', icon: '👀', phonetic: 'sáitciin', example: 'We <strong>spent</strong> the day <strong>sightseeing</strong>', examplePt: 'Nós passamos o dia fazendo passeios turísticos', categoryType: 'TRAVEL' },
+{ word: 'currency', translation: 'moeda', icon: '💵', phonetic: 'cârrenci', example: 'What is the <strong>local</strong> <strong>currency</strong>?', examplePt: 'Qual é a moeda local?', categoryType: 'TRAVEL' },
+{ word: 'exchange rate', translation: 'taxa de câmbio', icon: '💱', phonetic: 'exchênjd rêit', example: '<strong>Check</strong> the exchange <strong>rate</strong> before traveling', examplePt: 'Verifique a taxa de câmbio antes de viajar', categoryType: 'TRAVEL' }
+                ]
+            },
+            emotions: {
+                title: 'SENTIMENTOS (EMOTIONS)',
+                description: 'Vocabulário sobre Emoções e Estados de Espírito',
+                words: [
+                    // **Emoções Positivas**
+{ word: 'happy', translation: 'feliz', icon: '😊', phonetic: 'répi', example: 'I am very <strong>happy</strong> <strong>today</strong>', examplePt: 'Eu estou muito feliz hoje', categoryType: 'EMOTIONS' },
+{ word: 'excited', translation: 'animado', icon: '🤩', phonetic: 'ecsáited', example: 'I am so <strong>excited</strong> for the <strong>party</strong>', examplePt: 'Eu estou muito animado para a festa', categoryType: 'EMOTIONS' },
+{ word: 'calm', translation: 'calmo', icon: '😌', phonetic: 'cám', example: 'She is always <strong>very</strong> <strong>calm</strong>', examplePt: 'Ela é sempre muito calma', categoryType: 'EMOTIONS' },
+{ word: 'relaxed', translation: 'relaxado', icon: '🧘', phonetic: 'riléxed', example: 'I <strong>feel</strong> <strong>relaxed</strong> after the massage', examplePt: 'Eu me sinto relaxado depois da massagem', categoryType: 'EMOTIONS' },
+{ word: 'proud', translation: 'orgulhoso', icon: '🏆', phonetic: 'práud', example: 'I am <strong>proud</strong> of your <strong>achievement</strong>', examplePt: 'Eu estou orgulhoso da sua conquista', categoryType: 'EMOTIONS' },
+{ word: 'envy', translation: 'Inveja', icon: 'reenvy', phonetic: 'ênvi', example: 'She looked at his <strong>new</strong> <strong>car</strong> with envy.', examplePt: 'Ela olhou para o carro novo dele com inveja.', categoryType: 'EMOTIONS' },
+{ word: 'frustrated', translation: 'Frustrado', icon: '😤', phonetic: 'frâstrêited', example: 'He was <strong>frustrated</strong> with the <strong>problem</strong>.', examplePt: 'Ele estava frustrado com o problema.', categoryType: 'EMOTIONS' },
+{ word: 'vulnerable', translation: 'Vulnerável', icon: '🥺', phonetic: 'vâlnérabol', example: 'He felt <strong>vulnerable</strong> after the <strong>argument</strong>.', examplePt: 'Ele se sentiu vulnerável após a discussão.', categoryType: 'EMOTIONS' }
+
+                ]
+            },
+            hobbies: {
+                title: 'AÇÕES (HOBBIES)',
+                description: 'Vocabulário sobre Hobbies e Atividades de Lazer',
+                words: [
+                    // **Atividades Intelectuais e Criativas**
+{ word: 'read', translation: 'ler', icon: '📖', phonetic: 'ríd', example: 'I love to <strong>read</strong> <strong>books</strong> in my free time', examplePt: 'Eu amo ler livros no meu tempo livre', categoryType: 'HOBBIES' },
+{ word: 'write', translation: 'escrever', icon: '✍️', phonetic: 'ráit', example: 'She <strong>writes</strong> a <strong>novel</strong> every year', examplePt: 'Ela escreve um romance todo ano', categoryType: 'HOBBIES' },
+{ word: 'draw', translation: 'desenhar', icon: '✏️', phonetic: 'dró', example: 'She <strong>draws</strong> <strong>portraits</strong> in her sketchbook', examplePt: 'Ela desenha retratos em seu caderno de esboços', categoryType: 'HOBBIES' },
+{ word: 'paint', translation: 'pintar', icon: '🎨', phonetic: 'pêint', example: 'He spends <strong>hours</strong> <strong>painting</strong> beautiful landscapes', examplePt: 'Ele passa horas pintando paisagens bonitas', categoryType: 'HOBBIES' },
+{ word: 'photography', translation: 'fotografia', icon: '📸', phonetic: 'forógrafi', example: 'She <strong>practices</strong> <strong>photography</strong> during her travels', examplePt: 'Ela pratica fotografia durante suas viagens', categoryType: 'HOBBIES' },
+{ word: 'collect', translation: 'colecionar', icon: '📦', phonetic: 'coléct', example: 'He <strong>collects</strong> <strong>stamps</strong> and coins', examplePt: 'Ele coleciona selos e moedas', categoryType: 'HOBBIES' },
+{ word: 'build', translation: 'construir', icon: '🏗️', phonetic: 'bíld', example: 'They are <strong>building</strong> a <strong>new</strong> house', examplePt: 'Eles estão construindo uma casa nova', categoryType: 'HOBBIES' },
+{ word: 'volunteer', translation: 'fazer trabalho voluntário', icon: '🤝', phonetic: 'voluntír', example: 'They <strong>volunteer</strong> at the <strong>local</strong> hospital', examplePt: 'Eles fazem trabalho voluntário no hospital local', categoryType: 'HOBBIES' },
+{ word: 'meditate', translation: 'meditar', icon: '🧘', phonetic: 'méridêit', example: 'I <strong>meditate</strong> for <strong>inner</strong> peace', examplePt: 'Eu medito para paz interior', categoryType: 'HOBBIES' },
+{ word: 'relax', translation: 'relaxar', icon: '😌', phonetic: 'riléx', example: 'I like to <strong>relax</strong> on the <strong>beach</strong>', examplePt: 'Eu gosto de relaxar na praia', categoryType: 'HOBBIES' }
+                ]
+            },
+            money: {
+                title: 'DINHEIRO (MONEY)',
+                description: 'Vocabulário sobre Compras e Finanças',
+                words: [
+                    // **Dinheiro e Formas de Pagamento**
+{ word: 'money', translation: 'dinheiro', icon: '💰', phonetic: 'mâni', example: 'I <strong>need</strong> to <strong>save</strong> more money', examplePt: 'Eu preciso economizar mais dinheiro', categoryType: 'MONEY' },
+{ word: 'cash', translation: 'dinheiro em espécie', icon: '💵', phonetic: 'césh', example: 'I <strong>prefer</strong> to <strong>pay</strong> in cash', examplePt: 'Eu prefiro pagar em dinheiro', categoryType: 'MONEY' },
+{ word: 'card', translation: 'cartão', icon: '💳', phonetic: 'cárd', example: 'Do you <strong>accept</strong> credit <strong>card</strong>?', examplePt: 'Você aceita cartão de crédito?', categoryType: 'MONEY' },
+{ word: 'pay', translation: 'pagar', icon: '💳', phonetic: 'pêi', example: 'I need to <strong>pay</strong> the <strong>rent</strong>', examplePt: 'Eu preciso pagar o aluguel', categoryType: 'MONEY' },
+{ word: 'change', translation: 'troco', icon: '🪙', phonetic: 'tchêindj', example: 'The <strong>cashier</strong> gave me the wrong <strong>change</strong>', examplePt: 'O caixa me deu o troco errado', categoryType: 'MONEY' },
+{ word: 'receipt', translation: 'recibo/nota fiscal', icon: '🧾', phonetic: 'ricít', example: '<strong>Keep</strong> the <strong>receipt</strong> for returns', examplePt: 'Guarde o recibo para trocas', categoryType: 'MONEY' },
+{ word: 'tip', translation: 'gorjeta', icon: '💸', phonetic: 'típ', example: 'We left a <strong>generous</strong> <strong>tip</strong> for the waiter', examplePt: 'Nós deixamos uma gorjeta generosa para o garçom', categoryType: 'MONEY' },
+// **Termos de Negócios e Riqueza**
+{ word: 'investment', translation: 'investimento', icon: '📈', phonetic: 'invéstment', example: '<strong>Real</strong> estate is a good <strong>investment</strong>', examplePt: 'Imóveis são um bom investimento', categoryType: 'MONEY' },
+{ word: 'profit', translation: 'lucro', icon: '💲', phonetic: 'prófit', example: 'The <strong>company</strong> made a <strong>huge</strong> profit', examplePt: 'A empresa obteve um lucro enorme', categoryType: 'MONEY' },
+{ word: 'loss', translation: 'prejuízo', icon: '📉', phonetic: 'lóss', example: 'The <strong>business</strong> suffered a small <strong>loss</strong>', examplePt: 'O negócio sofreu um pequeno prejuízo', categoryType: 'MONEY' },
+{ word: 'wealth', translation: 'riqueza', icon: '💎', phonetic: 'uélf', example: '<strong>Health</strong> is true <strong>wealth</strong>', examplePt: 'Saúde é verdadeira riqueza', categoryType: 'MONEY' }
+                ]
+            },
+            countries: {
+                title: 'PAÍSES (COUNTRIES)',
+                description: 'Vocabulário sobre Países e Nacionalidades',
+                words: [
+                    // **América do Sul**
+{ word: 'Brazil', translation: 'Brasil', icon: '🇧🇷', phonetic: 'bruzíl', example: '<strong>Brazil</strong> is famous for <strong>Brazilian</strong> coffee', examplePt: 'O Brasil é famoso pelo café brasileiro', categoryType: 'COUNTRIES' },
+{ word: 'argentina', translation: 'Argentina', icon: '🇦🇷', phonetic: 'ardjentína', example: '<strong>Argentina</strong> is known for <strong>Argentine</strong> beef', examplePt: 'A Argentina é conhecida pela carne argentina', categoryType: 'COUNTRIES' },
+{ word: 'chile', translation: 'Chile', icon: '🇨🇱', phonetic: 'tchíli', example: '<strong>Chile</strong> produces excellent <strong>Chilean</strong> wine', examplePt: 'O Chile produz excelente vinho chileno', categoryType: 'COUNTRIES' },
+{ word: 'ethiopia', translation: 'Etiópia', icon: '🇪🇹', phonetic: 'efiópiâ', example: 'Ethiopia has a long <strong>ancient</strong> <strong>history</strong>.', examplePt: 'A Etiópia tem uma longa história antiga.', categoryType: 'COUNTRIES' },
+{ word: 'madagascar', translation: 'Madagascar', icon: '🇲🇬', phonetic: 'madagáskar', example: 'Madagascar is famous for its <strong>unique</strong> <strong>lemurs</strong>.', examplePt: 'Madagascar é famosa por seus lêmures exclusivos.', categoryType: 'COUNTRIES' }
+
+                ]
+            },
+            animals: {
+                title: 'ANIMAIS (ANIMALS)',
+                description: 'Vocabulário sobre Animais Domésticos e Selvagens',
+                words: [
+                    // **MAMÍFEROS DOMÉSTICOS E DE FAZENDA**
+{ word: 'dog', translation: 'cachorro', icon: '🐕', phonetic: 'dóg', example: 'My <strong>dog</strong> is <strong>very</strong> loyal.', examplePt: 'Meu cachorro é muito leal.', categoryType: 'ANIMALS' },
+{ word: 'cat', translation: 'gato', icon: '🐱', phonetic: 'cét', example: 'The <strong>cat</strong> is <strong>sleeping</strong> on the sofa.', examplePt: 'O gato está dormindo no sofá.', categoryType: 'ANIMALS' },
+{ word: 'horse', translation: 'cavalo', icon: '🐴', phonetic: 'hórs', example: 'The <strong>horse</strong> runs <strong>fast</strong>.', examplePt: 'O cavalo corre rápido.', categoryType: 'ANIMALS' },
+{ word: 'cow', translation: 'vaca', icon: '🐄', phonetic: 'cáu', example: 'The <strong>cow</strong> gives <strong>milk</strong>.', examplePt: 'A vaca dá leite.', categoryType: 'ANIMALS' },
+{ word: 'pig', translation: 'porco', icon: '🐖', phonetic: 'píg', example: 'The <strong>pig</strong> lives on the <strong>farm</strong>.', examplePt: 'O porco vive na fazenda.', categoryType: 'ANIMALS' },
+{ word: 'sheep', translation: 'ovelha', icon: '🐑', phonetic: 'chíip', example: 'The <strong>sheep</strong> has <strong>soft</strong> wool.', examplePt: 'A ovelha tem lã macia.', categoryType: 'ANIMALS' },
+{ word: 'goat', translation: 'cabra', icon: '🐐', phonetic: 'gôut', example: 'A <strong>goat</strong> can <strong>climb</strong> steep hills.', examplePt: 'Uma cabra consegue escalar colinas íngremes.', categoryType: 'ANIMALS' },
+{ word: 'centipede', translation: 'centopeia', icon: '🐛', phonetic: 'sêntipíd', example: 'The <strong>centipede</strong> has <strong>many</strong> legs.', examplePt: 'A centopeia tem muitas pernas.', categoryType: 'ANIMALS' },
+{ word: 'beetle', translation: 'besouro', icon: '🐞', phonetic: 'bíitâl', example: 'I found a <strong>shiny</strong> <strong>black</strong> beetle.', examplePt: 'Eu encontrei um besouro preto brilhante.', categoryType: 'ANIMALS' },
+{ word: 'earthworm', translation: 'minhoca (terrestre)', icon: '🪱', phonetic: 'êrthwêrm', example: '<strong>Earthworms</strong> are <strong>important</strong> for the soil.', examplePt: 'Minhocas são importantes para o solo.', categoryType: 'ANIMALS' }
+                ]
+            },
+            fruits_and_vegetables: {
+                title: 'FRUTAS E LEGUMES (FRUITS AND VEGETABLES)',
+                description: 'Vocabulário sobre Frutas e Vegetais',
+                words: [
+                    // **FRUITS (Frutas Comuns)**
+{ word: 'apple', translation: 'maçã', icon: '🍎', phonetic: 'épâl', example: 'An <strong>apple</strong> a day keeps the <strong>doctor</strong> away.', examplePt: 'Uma maçã por dia mantém o médico longe.', categoryType: 'FOOD' },
+{ word: 'banana', translation: 'banana', icon: '🍌', phonetic: 'bânânâ', example: 'I eat a <strong>banana</strong> after my <strong>workout</strong>.', examplePt: 'Eu como uma banana depois do meu treino.', categoryType: 'FOOD' },
+{ word: 'orange', translation: 'laranja', icon: '🍊', phonetic: 'órendj', example: 'Freshly squeezed <strong>orange</strong> <strong>juice</strong> is the best.', examplePt: 'Suco de laranja espremido na hora é o melhor.', categoryType: 'FOOD' },
+{ word: 'grape', translation: 'uva', icon: '🍇', phonetic: 'grêip', example: 'She bought a <strong>bunch</strong> of green <strong>grapes</strong>.', examplePt: 'Ela comprou um cacho de uvas verdes.', categoryType: 'FOOD' },
+{ word: 'chickpea', translation: 'grão-de-bico', icon: '🟡', phonetic: 'tchícpí', example: '<strong>Hummus</strong> is made from mashed <strong>chickpeas</strong>.', examplePt: 'Húmus é feito de grão-de-bico amassado.', categoryType: 'FOOD' },
+{ word: 'corn', translation: 'milho', icon: '🌽', phonetic: 'córn', example: '<strong>Sweet</strong> <strong>corn</strong> is delicious grilled.', examplePt: 'Milho doce é delicioso grelhado.', categoryType: 'FOOD' },
+{ word: 'soybean', translation: 'soja', icon: '🫘', phonetic: 'sóibín', example: '<strong>Soybeans</strong> are used to make <strong>tofu</strong>.', examplePt: 'Grãos de soja são usados para fazer tofu.', categoryType: 'FOOD' },
+{ word: 'lima bean', translation: 'feijão-lima', icon: '🫘', phonetic: 'láimâ bín', example: '<strong>Lima beans</strong> have a <strong>buttery</strong> texture.', examplePt: 'Feijão-lima tem uma textura amanteigada.', categoryType: 'FOOD' },
+{ word: 'kidney bean', translation: 'feijão-vermelho', icon: '🫘', phonetic: 'cídni bín', example: '<strong>Kidney beans</strong> are often used in <strong>chili</strong>.', examplePt: 'Feijão-vermelho é frequentemente usado em chili.', categoryType: 'FOOD' },
+{ word: 'pinto bean', translation: 'feijão-carioca', icon: '🫘', phonetic: 'píntou bín', example: '<strong>Pinto beans</strong> are <strong>common</strong> in Mexican food.', examplePt: 'Feijão-carioca é comum na comida mexicana.', categoryType: 'FOOD' },
+{ word: 'navy bean', translation: 'feijão-branco', icon: '🫘', phonetic: 'nêivi bín', example: '<strong>Navy beans</strong> are <strong>small</strong>, white, and oval-shaped.', examplePt: 'Feijão-branco é pequeno, branco e em forma oval.', categoryType: 'FOOD' },
+{ word: 'mustard green', translation: 'folha de mostarda', icon: '🥬', phonetic: 'mâstard grín', example: '<strong>Mustard greens</strong> have a <strong>spicy</strong> kick.', examplePt: 'Folha de mostarda tem um toque picante.', categoryType: 'FOOD' }
+                ]
+            },
+            sports: {
+                title: 'ESPORTES (SPORTS)',
+                description: 'Vocabulário sobre Atividades e Jogos',
+                words: [
+                    { word: 'soccer', translation: 'futebol', icon: '⚽', phonetic: 'sókâr', example: 'I play <strong>soccer</strong> every <strong>Saturday</strong>', examplePt: 'Eu jogo futebol todo sábado', categoryType: 'SPORTS' },
+{ word: 'basketball', translation: 'basquete', icon: '🏀', phonetic: 'báskêtbôl', example: 'He is <strong>good</strong> at <strong>basketball</strong>', examplePt: 'Ele é bom em basquete', categoryType: 'SPORTS' },
+{ word: 'tennis', translation: 'tênis', icon: '🎾', phonetic: 'ténis', example: 'She plays <strong>tennis</strong> in the <strong>club</strong>', examplePt: 'Ela joga tênis no clube', categoryType: 'SPORTS' },
+{ word: 'volleyball', translation: 'vôlei', icon: '🏐', phonetic: 'vólêibôl', example: 'They play <strong>volleyball</strong> on the <strong>beach</strong>', examplePt: 'Eles jogam vôlei na praia', categoryType: 'SPORTS' },
+{ word: 'swimming', translation: 'natação', icon: '🏊', phonetic: 'suímíng', example: 'I go <strong>swimming</strong> <strong>three</strong> times a week', examplePt: 'Eu faço natação três vezes por semana', categoryType: 'SPORTS' },
+
+{ word: 'rule', translation: 'regra', icon: '📝', phonetic: 'rúul', example: 'Follow the <strong>rules</strong> of the <strong>game</strong>', examplePt: 'Siga as regras do jogo', categoryType: 'SPORTS' },
+{ word: 'practice', translation: 'prática/treino', icon: '🔁', phonetic: 'práctis', example: 'I have <strong>tennis</strong> <strong>practice</strong> this afternoon', examplePt: 'Eu tenho treino de tênis esta tarde', categoryType: 'SPORTS' },
+{ word: 'fitness', translation: 'aptidão física/boa forma', icon: '💪', phonetic: 'fítnês', example: 'She works out to maintain her <strong>fitness</strong>', examplePt: 'Ela se exercita para manter a boa forma', categoryType: 'SPORTS' },
+{ word: 'health', translation: 'saúde', icon: '❤️', phonetic: 'hélth', example: '<strong>Sport</strong> is good for your <strong>health</strong>', examplePt: 'Esporte é bom para a sua saúde', categoryType: 'SPORTS' }
+                ]
+            },
+            technology: {
+                title: 'TECNOLOGIA (TECHNOLOGY)',
+                description: 'Vocabulário sobre o Mundo Digital',
+                words: [
+                    { word: 'computer', translation: 'computador', icon: '💻', phonetic: 'cômpíutâr', example: 'My <strong>computer</strong> is very <strong>fast</strong>', examplePt: 'Meu computador é muito rápido', categoryType: 'TECHNOLOGY' },
+{ word: 'laptop', translation: 'notebook/laptop', icon: '💻', phonetic: 'léptóp', example: 'I bought a new <strong>laptop</strong> for <strong>work</strong>', examplePt: 'Eu comprei um notebook novo para o trabalho', categoryType: 'TECHNOLOGY' },
+{ word: 'phone', translation: 'celular/telefone', icon: '📱', phonetic: 'fôun', example: 'My <strong>phone</strong> battery is <strong>low</strong>', examplePt: 'A bateria do meu celular está fraca', categoryType: 'TECHNOLOGY' },
+{ word: 'internet', translation: 'internet', icon: '🌐', phonetic: 'íntêrnét', example: 'The <strong>internet</strong> connection is <strong>slow</strong>', examplePt: 'A conexão de internet está lenta', categoryType: 'TECHNOLOGY' },
+{ word: 'virus', translation: 'vírus', icon: '🦠', phonetic: 'váirâs', example: 'My <strong>computer</strong> has a <strong>virus</strong>', examplePt: 'Meu computador está com um vírus', categoryType: 'TECHNOLOGY' },
+{ word: 'update', translation: 'atualização', icon: '🔄', phonetic: 'âpdêit', example: 'Please install the <strong>latest</strong> <strong>update</strong>', examplePt: 'Por favor, instale a atualização mais recente', categoryType: 'TECHNOLOGY' },
+{ word: 'settings', translation: 'configurações', icon: '⚙️', phonetic: 'sétíngs', example: 'You can change the <strong>language</strong> in the <strong>settings</strong>', examplePt: 'Você pode mudar o idioma nas configurações', categoryType: 'TECHNOLOGY' }
+                ]
+            },
+            numbers: {
+                title: 'NÚMEROS (NUMBERS)',
+                description: 'Vocabulário sobre Matemática e Contagem',
+                words: [
+                    { word: 'one', translation: 'um/uma', icon: '1️⃣', phonetic: 'uân', example: 'I have <strong>one</strong> <strong>sister</strong>', examplePt: 'Eu tenho uma irmã', categoryType: 'NUMBERS' },
+{ word: 'two', translation: 'dois/duas', icon: '2️⃣', phonetic: 'túu', example: 'I have <strong>two</strong> <strong>dogs</strong>', examplePt: 'Eu tenho dois cachorros', categoryType: 'NUMBERS' },
+{ word: 'three', translation: 'três', icon: '3️⃣', phonetic: 'thríi', example: 'I need <strong>three</strong> <strong>apples</strong>', examplePt: 'Eu preciso de três maçãs', categoryType: 'NUMBERS' },
+{ word: 'four', translation: 'quatro', icon: '4️⃣', phonetic: 'fôr', example: 'The car has <strong>four</strong> <strong>wheels</strong>', examplePt: 'O carro tem quatro rodas', categoryType: 'NUMBERS' },
+{ word: 'five', translation: 'cinco', icon: '5️⃣', phonetic: 'fáiv', example: 'We will meet in <strong>five</strong> <strong>minutes</strong>', examplePt: 'Nós vamos nos encontrar em cinco minutos', categoryType: 'NUMBERS' },
+{ word: 'ten', translation: 'dez', icon: '🔟', phonetic: 'tén', example: 'The <strong>total</strong> is <strong>ten</strong> dollars', examplePt: 'O total é dez dólares', categoryType: 'NUMBERS' },
+{ word: 'twenty', translation: 'vinte', icon: '20', phonetic: 'tuênti', example: 'I am <strong>twenty</strong> <strong>years</strong> old', examplePt: 'Eu tenho vinte anos', categoryType: 'NUMBERS' },
+{ word: 'hundred', translation: 'cem', icon: '💯', phonetic: 'hândrêd', example: 'I have <strong>one</strong> <strong>hundred</strong> books', examplePt: 'Eu tenho cem livros', categoryType: 'NUMBERS' },
+{ word: 'thousand', translation: 'mil', icon: '1k', phonetic: 'tháuzând', example: 'The <strong>price</strong> is <strong>one</strong> thousand dollars', examplePt: 'O preço é mil dólares', categoryType: 'NUMBERS' },
+{ word: 'quantity', translation: 'quantidade', icon: '📏', phonetic: 'cuantíti', example: 'The <strong>quantity</strong> is <strong>limited</strong>', examplePt: 'A quantidade é limitada', categoryType: 'NUMBERS' },
+{ word: 'many', translation: 'muitos/as', icon: '🔢', phonetic: 'méni', example: 'I have <strong>many</strong> <strong>friends</strong>', examplePt: 'Eu tenho muitos amigos', categoryType: 'NUMBERS' },
+{ word: 'much', translation: 'muito (incontável)', icon: '⚖️', phonetic: 'mâtch', example: 'I have <strong>too</strong> <strong>much</strong> work', examplePt: 'Eu tenho muito trabalho', categoryType: 'NUMBERS' },
+{ word: 'few', translation: 'poucos/as', icon: '🤏', phonetic: 'fiú', example: 'I have <strong>few</strong> <strong>errors</strong>', examplePt: 'Eu tenho poucos erros', categoryType: 'NUMBERS' }
+                ]
+            },
+            clothes: {
+                title: 'ROUPAS (CLOTHES)',
+                description: 'Vocabulário sobre Vestuário e Acessórios',
+                words: [
+                    { word: 'shirt', translation: 'camisa', icon: '👕', phonetic: 'chêrt', example: 'I bought a new <strong>shirt</strong> for the <strong>party</strong>', examplePt: 'Eu comprei uma camisa nova para a festa', categoryType: 'CLOTHING' },
+{ word: 't-shirt', translation: 'camiseta', icon: '👕', phonetic: 'tí-chêrt', example: 'He wears a <strong>simple</strong> <strong>t-shirt</strong> every day.', examplePt: 'Ele usa uma camiseta simples todos os dias.', categoryType: 'CLOTHING' },
+{ word: 'pants', translation: 'calças', icon: '👖', phonetic: 'pânts', example: 'These <strong>pants</strong> are too <strong>tight</strong>', examplePt: 'Estas calças estão muito apertadas', categoryType: 'CLOTHING' },
+{ word: 'jeans', translation: 'calças jeans', icon: '👖', phonetic: 'djíns', example: 'My <strong>favorite</strong> <strong>jeans</strong> are ripped.', examplePt: 'Minhas calças jeans favoritas estão rasgadas.', categoryType: 'CLOTHING' },
+{ word: 'dress', translation: 'vestido', icon: '👗', phonetic: 'drêss', example: 'She wore a <strong>beautiful</strong> <strong>dress</strong>', examplePt: 'Ela usou um vestido bonito', categoryType: 'CLOTHING' },
+{ word: 'tie', translation: 'gravata', icon: '👔', phonetic: 'tái', example: 'He <strong>adjusted</strong> his <strong>tie</strong> before the interview.', examplePt: 'Ele ajeitou a gravata antes da entrevista.', categoryType: 'CLOTHING' },
+{ word: 'bow tie', translation: 'gravata borboleta', icon: '🎀', phonetic: 'bôu tái', example: 'He wore a <strong>classy</strong> <strong>bow tie</strong> to the wedding.', examplePt: 'Ele usou uma gravata borboleta elegante no casamento.', categoryType: 'CLOTHING' },
+{ word: 'handbag', translation: 'bolsa de mão', icon: '👜', phonetic: 'rréndibág', example: 'She <strong>lost</strong> her <strong>handbag</strong> at the mall.', examplePt: 'Ela perdeu a bolsa de mão no shopping.', categoryType: 'CLOTHING' },
+{ word: 'backpack', translation: 'mochila', icon: '🎒', phonetic: 'békpáck', example: 'The <strong>student</strong> carried a heavy <strong>backpack</strong>.', examplePt: 'O estudante carregava uma mochila pesada.', categoryType: 'CLOTHING' },
+{ word: 'jewelry', translation: 'joias', icon: '💎', phonetic: 'djúelri', example: 'She loves to wear <strong>antique</strong> <strong>jewelry</strong>.', examplePt: 'Ela adora usar joias antigas.', categoryType: 'CLOTHING' },
+{ word: 'handkerchief', translation: 'lenço de bolso', icon: '⬜', phonetic: 'rrêndkêrchif', example: 'He used a <strong>silk</strong> <strong>handkerchief</strong> in his suit pocket.', examplePt: 'Ele usou um lenço de seda no bolso do terno.', categoryType: 'CLOTHING' },
+{ word: 'shawl', translation: 'xale', icon: '🧣', phonetic: 'chôl', example: 'She <strong>draped</strong> a warm <strong>shawl</strong> over her shoulders.', examplePt: 'Ela jogou um xale quente sobre os ombros.', categoryType: 'CLOTHING' },
+{ word: 'beanie', translation: 'gorro', icon: '🧢', phonetic: 'bíni', example: 'He wore a <strong>knit</strong> <strong>beanie</strong> during the cold weather.', examplePt: 'Ele usou um gorro de malha durante o tempo frio.', categoryType: 'CLOTHING' }
+                ]
+            },
+            body_parts: {
+                title: 'PARTES DO CORPO (BODY PARTS)',
+                description: 'Vocabulário essencial sobre o corpo humano',
+                words: [
+                    { word: 'head', translation: 'Cabeça', icon: '👤', phonetic: 'rréd', example: 'My <strong>head</strong> <strong>hurts</strong>.', examplePt: 'Minha cabeça dói.', categoryType: 'BODY' },
+{ word: 'hair', translation: 'Cabelo', icon: '💇', phonetic: 'rrér', example: 'She has <strong>long</strong> black <strong>hair</strong>.', examplePt: 'Ela tem cabelo longo e preto.', categoryType: 'BODY' },
+{ word: 'eyes', translation: 'Olhos', icon: '👀', phonetic: 'áis', example: '<strong>Open</strong> your <strong>eyes</strong>.', examplePt: 'Abra seus olhos.', categoryType: 'BODY' },
+{ word: 'ear', translation: 'Orelha', icon: '👂', phonetic: 'iâr', example: 'I <strong>heard</strong> a sound with my <strong>ear</strong>.', examplePt: 'Eu ouvi um som com a minha orelha.', categoryType: 'BODY' },
+{ word: 'mouth', translation: 'Boca', icon: '👄', phonetic: 'maúf', example: '<strong>Keep</strong> your <strong>mouth</strong> shut.', examplePt: 'Mantenha sua boca fechada.', categoryType: 'BODY' },
+{ word: 'nose', translation: 'Nariz', icon: '👃', phonetic: 'nouzi', example: 'He has a <strong>big</strong> <strong>nose</strong>.', examplePt: 'Ele tem um nariz grande.', categoryType: 'BODY' },
+{ word: 'cheek', translation: 'Bochecha', icon: '😊', phonetic: 'tchík', example: 'She <strong>kissed</strong> my <strong>cheek</strong>.', examplePt: 'Ela beijou minha bochecha.', categoryType: 'BODY' },
+{ word: 'fingerprint', translation: 'Digital', icon: ' fingerprints', phonetic: 'finguérprint', example: 'The <strong>police</strong> found a <strong>fingerprint</strong> on the glass.', examplePt: 'A polícia encontrou uma digital no vidro.', categoryType: 'BODY' },
+{ word: 'footprint', translation: 'Pegada', icon: '👣', phonetic: 'fûtprint', example: 'There were <strong>footprints</strong> in the <strong>sand</strong>.', examplePt: 'Havia pegadas na areia.', categoryType: 'BODY' }
+                ]
+            },
+            health: {
+                title: 'SAÚDE (HEALTH)',
+                description: 'Vocabulário sobre Emergência e Bem-estar',
+                words: [
+                    { word: 'hospital', translation: 'hospital', icon: '🏥', phonetic: 'hóspitâl', example: 'Take me to the <strong>hospital</strong> <strong>immediately</strong>.', examplePt: 'Leve-me ao hospital imediatamente.', categoryType: 'HEALTH' },
+{ word: 'doctor', translation: 'médico(a)', icon: '👨‍⚕️', phonetic: 'dóctâr', example: 'I have an <strong>appointment</strong> with the <strong>doctor</strong> at 3 PM.', examplePt: 'Eu tenho uma consulta com o médico às 15h.', categoryType: 'HEALTH' },
+{ word: 'nurse', translation: 'enfermeiro(a)', icon: '👩‍⚕️', phonetic: 'nêrs', example: 'The <strong>nurse</strong> gave me the <strong>medicine</strong>.', examplePt: 'A enfermeira me deu o remédio.', categoryType: 'HEALTH' },
+{ word: 'emergency', translation: 'emergência', icon: '🚨', phonetic: 'êmêrdjênsi', example: 'Call <strong>emergency</strong> services <strong>now</strong>!', examplePt: 'Ligue para os serviços de emergência agora!', categoryType: 'HEALTH' },
+{ word: 'ambulance', translation: 'ambulância', icon: '🚑', phonetic: 'émbiulâns', example: 'An <strong>ambulance</strong> arrived <strong>quickly</strong>.', examplePt: 'Uma ambulância chegou rapidamente.', categoryType: 'HEALTH' },
+{ word: 'pharmacy', translation: 'farmácia', icon: '💊', phonetic: 'fármâsi', example: 'Is there a <strong>pharmacy</strong> near <strong>here</strong>?', examplePt: 'Há uma farmácia perto daqui?', categoryType: 'HEALTH' },
+{ word: 'dentist', translation: 'dentista', icon: '🦷', phonetic: 'dêntîst', example: 'I need to see a <strong>dentist</strong> for a <strong>toothache</strong>.', examplePt: 'Eu preciso ver um dentista por causa de uma dor de dente.', categoryType: 'HEALTH' },
+{ word: 'appointment', translation: 'consulta/hora marcada', icon: '📅', phonetic: 'âpóintmênt', example: 'I have a doctor\'s <strong>appointment</strong> <strong>tomorrow</strong>.', examplePt: 'Eu tenho uma consulta médica amanhã.', categoryType: 'HEALTH' },
+{ word: 'pain', translation: 'dor', icon: '🤕', phonetic: 'pêin', example: 'I feel a sharp <strong>pain</strong> in my <strong>chest</strong>.', examplePt: 'Eu sinto uma dor aguda no meu peito.', categoryType: 'HEALTH' },
+{ word: 'fever', translation: 'febre', icon: '🌡️', phonetic: 'fíivâr', example: 'The <strong>child</strong> has a high <strong>fever</strong>.', examplePt: 'A criança está com febre alta.', categoryType: 'HEALTH' },
+{ word: 'choking', translation: 'engasgando', icon: ' choking', phonetic: 'tchôukíng', example: 'He is <strong>choking</strong>! He needs the <strong>Heimlich</strong> maneuver.', examplePt: 'Ele está engasgando! Ele precisa da manobra de Heimlich.', categoryType: 'HEALTH' },
+{ word: 'poisoning', translation: 'envenenamento', icon: '💀', phonetic: 'póizânîng', example: 'I suspect <strong>poisoning</strong> from that <strong>food</strong>.', examplePt: 'Eu suspeito de envenenamento por aquela comida.', categoryType: 'HEALTH' },
+{ word: 'breathing', translation: 'respiração', icon: '💨', phonetic: 'bríidhîng', example: 'He is having <strong>trouble</strong> <strong>breathing</strong>.', examplePt: 'Ele está tendo dificuldade para respirar.', categoryType: 'HEALTH' }
+                ]
+            },
+            weather: {
+                title: 'CLIMA (WEATHER)',
+                description: 'Vocabulário sobre Previsão e Estações',
+                words: [
+                    { word: 'weather', translation: 'tempo/clima', icon: '☁️', phonetic: 'uédhâr', example: 'What is the <strong>weather</strong> like <strong>today</strong>?', examplePt: 'Como está o clima hoje?', categoryType: 'WEATHER' },
+{ word: 'forecast', translation: 'previsão', icon: '📰', phonetic: 'fórcast', example: 'The <strong>forecast</strong> says it will <strong>rain</strong> tomorrow.', examplePt: 'A previsão diz que vai chover amanhã.', categoryType: 'WEATHER' },
+{ word: 'sunny', translation: 'ensolarado', icon: '☀️', phonetic: 'sãni', example: 'It’s a <strong>beautiful</strong> <strong>sunny</strong> day.', examplePt: 'É um lindo dia ensolarado.', categoryType: 'WEATHER' },
+{ word: 'cloudy', translation: 'nublado', icon: '☁️', phonetic: 'claúdi', example: 'The <strong>sky</strong> is <strong>cloudy</strong> this morning.', examplePt: 'O céu está nublado esta manhã.', categoryType: 'WEATHER' },
+{ word: 'rainy', translation: 'chuvoso', icon: '🌧️', phonetic: 'reíni', example: 'Don\'t forget your <strong>umbrella</strong>, it\'s <strong>rainy</strong>.', examplePt: 'Não esqueça seu guarda-chuva, está chuvoso.', categoryType: 'WEATHER' },
+{ word: 'windy', translation: 'ventoso', icon: '💨', phonetic: 'uíndi', example: 'It is very <strong>windy</strong> on the <strong>coast</strong>.', examplePt: 'Está muito ventoso na costa.', categoryType: 'WEATHER' },
+{ word: 'summer', translation: 'verão', icon: '🏖️', phonetic: 'sãmâr', example: 'We are going to the <strong>beach</strong> this <strong>summer</strong>.', examplePt: 'Nós vamos à praia neste verão.', categoryType: 'WEATHER' },
+{ word: 'autumn (fall)', translation: 'outono', icon: '🍂', phonetic: 'ótâm / fóul', example: 'The <strong>leaves</strong> change color in <strong>autumn</strong>.', examplePt: 'As folhas mudam de cor no outono.', categoryType: 'WEATHER' },
+{ word: 'winter', translation: 'inverno', icon: '☃️', phonetic: 'uintâr', example: 'It gets very <strong>dark</strong> early in <strong>winter</strong>.', examplePt: 'Escurece muito cedo no inverno.', categoryType: 'WEATHER' }
+                ]
+            },
+			
+			time: {
+                title: 'TEMPO (TIME)',
+                description: 'Vocabulário essencial sobre horas, dias e momentos',
+                words: [
+                    { word: 'time', translation: 'Tempo/Hora', icon: '⏰', phonetic: 'taíme', example: 'What <strong>time</strong> is <strong>it?</strong>', examplePt: 'Que horas são?', categoryType: 'TIME' },
+{ word: 'hour', translation: 'Hora', icon: '⏳', phonetic: 'áuer', example: 'I need <strong>one</strong> <strong>hour</strong> to finish this.', examplePt: 'Eu preciso de uma hora para terminar isto.', categoryType: 'TIME' },
+{ word: 'minute', translation: 'Minuto', icon: '⏳', phonetic: 'mínit', example: 'I\'ll be <strong>ready</strong> in five <strong>minute</strong>s.', examplePt: 'Eu estarei pronto em cinco minutos.', categoryType: 'TIME' },
+{ word: 'second', translation: 'Segundo', icon: '⏱️', phonetic: 'sécond', example: 'Wait just <strong>one</strong> <strong>second</strong>.', examplePt: 'Espere apenas um segundo.', categoryType: 'TIME' },
+{ word: 'o\'clock', translation: 'Em ponto', icon: '🕛', phonetic: 'ou clók', example: 'It\'s <strong>seven</strong> <strong>o\'clock</strong>.', examplePt: 'São sete em ponto.', categoryType: 'TIME' },
+{ word: 'yesterday', translation: 'Ontem', icon: '🔙', phonetic: 'iésterdêi', example: 'What did you <strong>do</strong> <strong>yesterday</strong>', examplePt: 'O que você fez ontem?', categoryType: 'TIME' },
+{ word: 'today', translation: 'Hoje', icon: '➡️', phonetic: 'tudêi', example: 'We are <strong>busy</strong> <strong>today</strong>.', examplePt: 'Nós estamos ocupados hoje.', categoryType: 'TIME' },
+{ word: 'tomorrow', translation: 'Amanhã', icon: '🔜', phonetic: 'tumórou', example: 'We <strong>leave</strong> <strong>tomorrow</strong> morning.', examplePt: 'Nós partimos amanhã de manhã.', categoryType: 'TIME' }
+                ]
+            },
+            religion: {
+                title: 'RELIGIÃO (RELIGION)',
+                description: 'Vocabulário sobre crenças e cultos',
+                words: [
+                    // CRENÇAS E CONCEITOS CENTRAIS
+{ word: 'God', translation: 'Deus', icon: '✨', phonetic: 'gád', example: 'Christians believe in <strong>one</strong> <strong>God</strong>.', examplePt: 'Os cristãos acreditam em um único Deus.', categoryType: 'RELIGION_AND_BELIEFS' },
+{ word: 'faith', translation: 'Fé', icon: '🕊️', phonetic: 'fêith', example: 'He has <strong>great</strong> <strong>faith</strong> in the future.', examplePt: 'Ele tem grande fé no futuro.', categoryType: 'RELIGION_AND_BELIEFS' },
+{ word: 'belief', translation: 'Crença', icon: '💡', phonetic: 'bilíf', example: 'What are your <strong>core</strong> <strong>beliefs?</strong>', examplePt: 'Quais são as suas crenças centrais?', categoryType: 'RELIGION_AND_BELIEFS' },
+{ word: 'spirit', translation: 'Espírito', icon: '🌬️', phonetic: 'spírit', example: 'The <strong>body</strong> and the <strong>spirit</strong> are connected.', examplePt: 'O corpo e o espírito estão conectados.', categoryType: 'RELIGION_AND_BELIEFS' },
+{ word: 'soul', translation: 'Alma', icon: '💫', phonetic: 'sôul', example: 'Many believe the <strong>soul</strong> is <strong>immortal</strong>.', examplePt: 'Muitos acreditam que a alma é imortal.', categoryType: 'RELIGION_AND_BELIEFS' },
+{ word: 'monotheism', translation: 'Monoteísmo', icon: '1️⃣', phonetic: 'monothíizm', example: 'Judaism is a <strong>monotheism</strong> <strong>religion</strong>.', examplePt: 'O Judaísmo é uma religião de monoteísmo.', categoryType: 'RELIGION_AND_BELIEFS' },
+{ word: 'polytheism', translation: 'Politeísmo', icon: '🔟', phonetic: 'polithíizm', example: 'Hinduism is a <strong>form</strong> of <strong>polytheism</strong>.', examplePt: 'O Hinduísmo é uma forma de politeísmo.', categoryType: 'RELIGION_AND_BELIEFS' },
+{ word: 'secular', translation: 'Secular/Laico', icon: '🏢', phonetic: 'sékular', example: 'The <strong>government</strong> is officially <strong>secular</strong>.', examplePt: 'O governo é oficialmente secular.', categoryType: 'RELIGION_AND_BELIEFS' }
+                ]
+            },
+			
+            essential_phrases: {
+                title: 'FRASES ESSENCIAIS (ESSENTIAL PHRASES)',
+                description: 'Saudações e Cumprimentos do dia a dia',
+                words: [
+                    { word: 'Hello', translation: 'Olá', icon: '👋', phonetic: 'relou', example: '<strong>Say</strong> <strong>Hello</strong> to your friend.', examplePt: 'Diga Olá para o seu amigo.', categoryType: 'PHRASES' },
+{ word: 'Goodbye', translation: 'Tchau', icon: '👋', phonetic: 'gudibai', example: 'We must say <strong>Goodbye</strong> <strong>now</strong>.', examplePt: 'Temos que dizer Tchau agora.', categoryType: 'PHRASES' },
+{ word: 'What\'s your name?', translation: 'Qual é o seu nome?', icon: '💬', phonetic: 'uat is iór neime', example: '<strong>Excuse me</strong>, <strong>What\'s your name?</strong>', examplePt: 'Com licença, Qual é o seu nome?', categoryType: 'PHRASES' },
+{ word: 'Where are you from?', translation: 'De onde você é?', icon: '🌎', phonetic: 'uér ar iu from', example: '<strong>Tell</strong> me, <strong>Where are you from?</strong>', examplePt: 'Diga-me, De onde você é?', categoryType: 'PHRASES' },
+{ word: 'Nice to meet you', translation: 'Bom te conhecer', icon: '🤝', phonetic: 'naíce tchu mit iu', example: 'It was a <strong>pleasure</strong>, <strong>Nice to meet you</strong>.', examplePt: 'Foi um prazer, Bom te conhecer.', categoryType: 'PHRASES' },
+{ word: 'We have to talk', translation: 'Temos que conversar', icon: '🗣️', phonetic: 'uí révi tchu tolqui', example: 'It\'s <strong>important</strong>, <strong>We have to talk</strong>.', examplePt: 'É importante, Temos que conversar.', categoryType: 'PHRASES' },
+{ word: 'What\'s your job?', translation: 'Qual é o seu trabalho?', icon: '💼', phonetic: 'uati is ió djobi', example: 'If you <strong>don\'t mind</strong>, <strong>What\'s your job?</strong>', examplePt: 'Se não se importar, Qual é o seu trabalho?', categoryType: 'PHRASES' },
+{ word: 'Where are you going?', translation: 'Onde você vai?', icon: '🚶', phonetic: 'uér ar iu goin', example: 'I <strong>need</strong> to know <strong>Where are you going</strong>.', examplePt: 'Eu preciso saber Onde você vai.', categoryType: 'PHRASES' },
+{ word: 'Me too', translation: 'Eu também', icon: '👍', phonetic: 'mi tchu', example: 'I love <strong>pizza</strong>! <strong>Me too</strong>!', examplePt: 'Eu amo pizza! Eu também!', categoryType: 'PHRASES' }
+                ]
+            },
+            phrasal_verbs: {
+                title: 'VERBOS FRASAIS (PHRASAL VERBS)',
+                description: 'Verbos compostos por duas ou três palavras',
+                words: [
+                    { word: 'screw up', translation: 'Estragar uma situação', icon: '🤦', phonetic: 'scrú ãp', example: 'Don\'t <strong>screw up</strong> this <strong>presentation</strong>.', examplePt: 'Não estrague esta apresentação.', categoryType: 'PHRASAL_VERBS' },
+{ word: 'set up', translation: 'Organizar um evento', icon: '📅', phonetic: 'set ãp', example: 'We need to <strong>set up</strong> the <strong>conference</strong> room.', examplePt: 'Precisamos organizar a sala de conferências.', categoryType: 'PHRASAL_VERBS' },
+{ word: 'show off', translation: 'Se mostrar/Exibir', icon: '😎', phonetic: 'shou óf', example: 'He is always trying to <strong>show off</strong> his <strong>money</strong>.', examplePt: 'Ele está sempre tentando se exibir com seu dinheiro.', categoryType: 'PHRASAL_VERBS' },
+{ word: 'shut up', translation: 'Calar a boca', icon: '🤫', phonetic: 'shãt ãp', example: 'Just <strong>shut up</strong> and <strong>listen</strong>!', examplePt: 'Apenas cale a boca e escute!', categoryType: 'PHRASAL_VERBS' },
+{ word: 'get away', translation: 'Sair de perto/Escapar', icon: ' escape-icon', phonetic: 'guet aueí', example: 'I need to <strong>get away</strong> from the <strong>city</strong> for a few days.', examplePt: 'Eu preciso sair de perto da cidade por alguns dias.', categoryType: 'PHRASAL_VERBS' },
+{ word: 'get out', translation: 'Sair de um lugar', icon: '🚪', phonetic: 'guet áuti', example: 'Hurry up and <strong>get out</strong> of the <strong>car</strong>!', examplePt: 'Rápido e saia do carro!', categoryType: 'PHRASAL_VERBS' },
+{ word: 'get over', translation: 'Superar uma situação', icon: ' overcoming-icon', phonetic: 'guet ouver', example: 'It took him a long <strong>time</strong> to <strong>get over</strong> the breakup.', examplePt: 'Demorou muito para ele superar o término.', categoryType: 'PHRASAL_VERBS' },
+{ word: 'give away', translation: 'Doar/Dar de presente', icon: '🎁', phonetic: 'guive aueí', example: 'She decided to <strong>give away</strong> her <strong>old</strong> clothes.', examplePt: 'Ela decidiu doar suas roupas velhas.', categoryType: 'PHRASAL_VERBS' }
+                ]
+            }
+        };
+
+     // --- FUNÇÕES DE MEMÓRIA E NAVEGAÇÃO ---
+
+// Função auxiliar para esconder as listas de categorias
+function hideCategoryLists() {
+    document.getElementById('grammaticalCategories').classList.add('hidden');
+    document.getElementById('specificCategories').classList.add('hidden');
+}
+
+// Função auxiliar para mostrar as listas de categorias
+function showCategoryLists() {
+    document.getElementById('grammaticalCategories').classList.remove('hidden');
+    document.getElementById('specificCategories').classList.remove('hidden');
+}
+
+// FUNÇÕES PARA EXIBIR AS CATEGORIAS
+// Exemplo de como deve ficar dentro da showCategory:
+
+function showCategory(categoryName) {
+    hideCategoryLists();
+    
+    // MEMÓRIA: Usando apenas sessionStorage para evitar o "pisco" ao reiniciar o app
+    sessionStorage.setItem('lastVocabCategory', categoryName);
+    sessionStorage.setItem('isSpecific', 'false');
+    
+    const data = categoryData[categoryName];
+    if (data) {
+        document.getElementById('categorySection').classList.remove('hidden'); 
+        document.getElementById('categoryTitle').textContent = data.title;
+        document.getElementById('categoryDescription').textContent = data.description;
+        generateCards(data.words, categoryName);
+        
+        document.getElementById('backToCategoriesBtn').classList.remove('hidden');
+        document.getElementById('gameBtn').classList.remove('hidden'); 
+        document.getElementById('historyBtn').classList.remove('hidden'); 
+        
+        // MOSTRA as setas de navegação (Garante o flex para o empilhamento vertical)
+        const nav = document.getElementById('categoryNavigation');
+        if (nav) {
+            nav.classList.remove('hidden');
+            nav.style.display = 'flex';
+        }
+
+        window.currentCategory = categoryName; 
+        window.isSpecific = false; 
+    }
+}
+
+function showSpecificCategory(categoryName) {
+    hideCategoryLists();
+    
+    // MEMÓRIA: Usando apenas sessionStorage
+    sessionStorage.setItem('lastVocabCategory', categoryName);
+    sessionStorage.setItem('isSpecific', 'true');
+    
+    const data = specificCategoryData[categoryName];
+    if (data) {
+        document.getElementById('categorySection').classList.remove('hidden'); 
+        document.getElementById('categoryTitle').textContent = data.title;
+        document.getElementById('categoryDescription').textContent = data.description;
+        generateCards(data.words, categoryName);
+        
+        document.getElementById('backToCategoriesBtn').classList.remove('hidden');
+        document.getElementById('gameBtn').classList.remove('hidden'); 
+        document.getElementById('historyBtn').classList.remove('hidden'); 
+        
+        // MOSTRA as setas de navegação (Garante o flex para o empilhamento vertical)
+        const nav = document.getElementById('categoryNavigation');
+        if (nav) {
+            nav.classList.remove('hidden');
+            nav.style.display = 'flex';
+        }
+
+        window.currentCategory = categoryName; 
+        window.isSpecific = true; 
+    }
+}
+
+function hideCategory() {
+    // Para áudio ao sair
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+        window.currentVocabAudio.currentTime = 0;
+    }
+
+    // Limpa a memória da sessão atual
+    sessionStorage.removeItem('lastVocabCategory');
+    sessionStorage.removeItem('isSpecific');
+    
+    showCategoryLists();
+    document.getElementById('categorySection').classList.add('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    document.getElementById('backToCategoriesBtn').classList.add('hidden');
+    document.getElementById('gameBtn').classList.add('hidden'); 
+    document.getElementById('historyBtn').classList.add('hidden'); 
+
+    // ESCONDE as setas de navegação
+    const nav = document.getElementById('categoryNavigation');
+    if (nav) {
+        nav.classList.add('hidden');
+        nav.style.display = 'none';
+    }
+}
+
+// --- LOGICA DE AUTO-RETORNO AO CARREGAR A PÁGINA ---
+window.addEventListener('DOMContentLoaded', () => {
+    // Trocamos local por session aqui para evitar o "pisco" ao reabrir o app
+    const saved = sessionStorage.getItem('lastVocabCategory');
+    const isSpecific = sessionStorage.getItem('isSpecific') === 'true';
+
+    if (saved) {
+        // Remove a classe hidden da seção principal de cards
+        const categorySection = document.getElementById('categorySection');
+        if (categorySection) categorySection.classList.remove('hidden');
+        
+        if (isSpecific) {
+            showSpecificCategory(saved);
+        } else {
+            showCategory(saved);
+        }
+    }
+});
+
+// --- FUNÇÕES DO JOGO (COPIE E SUBSTITUA AS DUAS ABAIXO) ---
+
+function abrirMenuJogo() {
+    // 1. Mata o áudio dos cards antes de abrir o jogo
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+        window.currentVocabAudio.currentTime = 0;
+    }
+
+    // 2. Reforço de segurança: para qualquer outro áudio na página
+    const audios = document.getElementsByTagName('audio');
+    for (let i = 0; i < audios.length; i++) {
+        audios[i].pause();
+        audios[i].currentTime = 0;
+    }
+
+    // 3. Sua lógica original de interface
+    document.getElementById('gameModal').classList.remove('hidden');
+    document.getElementById('gameLevels').classList.remove('hidden');
+    document.getElementById('gameBoard').classList.add('hidden');
+    document.getElementById('gameWinMessage').classList.add('hidden');
+    document.getElementById('gameModalTitle').textContent = "Desafio: " + window.currentCategory;
+}
+
+function fecharJogo() {
+    // Para o som ao sair para não voltar à biblioteca com barulho do jogo
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+        window.currentVocabAudio.currentTime = 0;
+    }
+
+    document.getElementById('gameModal').classList.add('hidden');
+    
+    // Mantém a limpeza da memória das cartas
+    if (typeof cartasViradas !== 'undefined') {
+        cartasViradas = [];
+    }
+}
+
+function voltarParaNiveis() {
+    const gameLevels = document.getElementById('gameLevels');
+    
+    // Se a tela de níveis JÁ ESTIVER visível (não tem a classe hidden)
+    // significa que o usuário quer sair do jogo de vez.
+    if (!gameLevels.classList.contains('hidden')) {
+        fecharJogo(); // Fecha o popup totalmente
+        return;
+    }
+
+    // Caso contrário, ele apenas limpa o jogo e volta para a seleção de níveis
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+    }
+
+    document.getElementById('gameBoard').classList.add('hidden');
+    document.getElementById('gameWinMessage').classList.add('hidden');
+    gameLevels.classList.remove('hidden'); // Mostra os botões Level 1, 2 e 3
+
+    if (typeof cartasViradas !== 'undefined') {
+        cartasViradas = [];
+    }
+}
+
+
+// =================================================================
+// FUNÇÕES DE NAVEGAÇÃO E LISTENER DE SCROLL (PARA VOLTAR AO TOPO)
+// =================================================================
+
+// Função para rolar a tela suavemente para o topo
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ==========================================================
+// CÓDIGO DE ACELERAÇÃO NW.JS (ADICIONE ISTO)
+// ==========================================================
+//window.onload = function() {
+    // Comando para mostrar a janela, agora que todo o HTML, CSS e JS carregou.
+    // Isso evita que o usuário veja a janela carregando elementos vazios.
+//    nw.Window.get().show();
+    
+    // Se você tiver outras funções que dependem de todos os elementos estarem prontos,
+    // inicie-as aqui dentro.
+//};
+// ==========================================================
+
+// Listener de Scroll para mostrar/ocultar o botão 'Voltar ao Topo'
+window.addEventListener('scroll', function() {
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    
+    if (scrollToTopBtn) { // Verifica se o botão existe no HTML
+        // Mostra o botão após rolar 300 pixels
+        if (window.scrollY > 300) { 
+            scrollToTopBtn.classList.remove('hidden');
+        } else {
+            scrollToTopBtn.classList.add('hidden');
+        }
+    }
+    
+    // NOVO: Controla a visibilidade da barra fixa (Opcional, mas recomendado)
+    const fixedNavbar = document.getElementById('fixedNavbar');
+    if (fixedNavbar) {
+        if (window.scrollY > 150) { // Mostra a barra fixa quando o usuário rola o banner principal
+            fixedNavbar.classList.remove('hidden');
+        } else {
+            fixedNavbar.classList.add('hidden');
+        }
+    }
+	
+});
+
+// ==========================================================
+// LÓGICA DO JOGO DA MEMÓRIA - SINCRONIZADA COM OS CARDS
+// ==========================================================
+
+let cartasViradas = [];
+let paresEncontrados = 0;
+let podeClicar = true;
+
+// 1. A mesma lógica de limpeza que você usa nos botões dos cards
+
+function prepararTextoParaAudio(texto) {
+    if (!texto) return "";
+    return texto
+        .replace(/<[^>]*>/g, '')      // Remove tags <strong> etc (igual ao seu card)
+        .replace(/[?'&]/g, '')        // Remove pontuação específica (igual ao seu card)
+        .replace(/\s/g, '_')          // Espaços por _ (igual ao seu card)
+        .toLowerCase();               // Tudo minúsculo
+}
+
+// --- FUNÇÕES DO JOGO (COPIE E SUBSTITUA AS DUAS ABAIXO) ---
+
+function abrirMenuJogo() {
+    // 1. Mata o áudio dos cards antes de abrir o jogo
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+        window.currentVocabAudio.currentTime = 0;
+    }
+
+    // 2. Reforço de segurança: para qualquer outro áudio na página
+    const audios = document.getElementsByTagName('audio');
+    for (let i = 0; i < audios.length; i++) {
+        audios[i].pause();
+        audios[i].currentTime = 0;
+    }
+
+    // 3. Sua lógica original de interface
+    document.getElementById('gameModal').classList.remove('hidden');
+    document.getElementById('gameLevels').classList.remove('hidden');
+    document.getElementById('gameBoard').classList.add('hidden');
+    document.getElementById('gameWinMessage').classList.add('hidden');
+    document.getElementById('gameModalTitle').textContent = "Desafio: " + window.currentCategory;
+}
+
+function fecharJogo() {
+    // Para o som IMEDIATAMENTE ao fechar no "X" ou no botão Sair
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+        window.currentVocabAudio.currentTime = 0;
+        window.currentVocabAudio = null; // Limpa a memória
+    }
+
+    document.getElementById('gameModal').classList.add('hidden');
+    
+    if (typeof cartasViradas !== 'undefined') {
+        cartasViradas = [];
+    }
+}
+
+function voltarParaNiveis() {
+    const gameLevels = document.getElementById('gameLevels');
+    
+    // Se a tela de níveis JÁ ESTIVER visível (não tem a classe hidden)
+    // significa que o usuário quer sair do jogo de vez.
+    if (!gameLevels.classList.contains('hidden')) {
+        fecharJogo(); // Fecha o popup totalmente
+        return;
+    }
+
+    // Caso contrário, ele apenas limpa o jogo e volta para a seleção de níveis
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+    }
+
+    document.getElementById('gameBoard').classList.add('hidden');
+    document.getElementById('gameWinMessage').classList.add('hidden');
+    gameLevels.classList.remove('hidden'); // Mostra os botões Level 1, 2 e 3
+
+    if (typeof cartasViradas !== 'undefined') {
+        cartasViradas = [];
+    }
+}
+
+function iniciarJogo(nivel) {
+    const banco = window.isSpecific ? specificCategoryData : categoryData;
+    const listaPalavras = banco[window.currentCategory].words;
+    
+    window.totalParesJogo = (listaPalavras.length >= 30) ? 12 : 8;
+    const selecionadas = [...listaPalavras].sort(() => 0.5 - Math.random()).slice(0, window.totalParesJogo);
+    
+// Configuração de cores INVERTIDAS (Fundo forte, borda clara)
+let estiloCapa = "";
+
+if (nivel === 1) {
+    // Antes: bg-blue-50 border-blue-400
+    // Agora: Fundo azul médio, borda clarinha, texto branco para dar leitura
+    estiloCapa = "bg-blue-400 border-blue-50 text-white shadow-md";
+} else if (nivel === 2) {
+    // Antes: bg-yellow-50 border-yellow-400
+    // Agora: Fundo amarelo vibrante, borda clarinha, texto escuro para contraste
+    estiloCapa = "bg-yellow-400 border-yellow-50 text-yellow-900 shadow-md";
+} else {
+    // Antes: bg-red-50 border-red-400
+    // Agora: Fundo vermelho vivo, borda clarinha, texto branco
+    estiloCapa = "bg-red-400 border-red-50 text-white shadow-md";
+}
+
+    let deck = [];
+    selecionadas.forEach((item, index) => {
+        const nomeArquivoPalavra = prepararTextoParaAudio(item.word);
+        const nomeArquivoFrase = prepararTextoParaAudio(item.example);
+        const audioFinal = (nivel === 3) ? `audio/${nomeArquivoFrase}.mp3` : `audio/${nomeArquivoPalavra}.mp3`;
+
+        let mostrarA = (nivel === 3) ? item.example : item.word;
+        deck.push({ id: index, audio: audioFinal, mostrar: mostrarA });
+        
+        let mostrarB = (nivel === 1) ? item.translation : (nivel === 2 ? item.word : item.example);
+        deck.push({ id: index, audio: audioFinal, mostrar: mostrarB });
+    });
+
+    deck.sort(() => 0.5 - Math.random());
+    const board = document.getElementById('gameBoard');
+    board.innerHTML = '';
+    board.classList.remove('hidden');
+    document.getElementById('gameLevels').classList.add('hidden');
+
+    deck.forEach((carta) => {
+    const cardDiv = document.createElement('div');
+    cardDiv.className = "perspective h-32 sm:h-40 w-full mb-2 cursor-pointer";
+    cardDiv.innerHTML = `
+        <div class="card-inner w-full h-full" onclick="virarCarta(this, ${carta.id}, '${carta.audio}')">
+            
+            <div class="card-front ${estiloCapa} border-2 flex items-center justify-center rounded-lg shadow-sm text-2xl font-bold">
+                ?
+            </div>
+            
+            <div class="card-back flex items-center justify-center p-2 bg-white border-2 border-blue-100 shadow-inner rounded-lg">
+                <div class="text-center font-black uppercase tracking-tight" 
+                     style="color: #1e3a8a; 
+                            line-height: 1.1; 
+                            word-break: break-word;
+                            font-size: ${carta.mostrar.length > 30 ? '0.9rem' : (carta.mostrar.length > 15 ? '1.1rem' : '1.3rem')};">
+                    ${carta.mostrar}
+                </div>
+            </div>
+        </div>
+    `;
+    board.appendChild(cardDiv);
+});
+    
+    paresEncontrados = 0;
+    cartasViradas = [];
+    podeClicar = true;
+}
+
+function virarCarta(elemento, id, audioPath) {
+    if (!podeClicar || elemento.classList.contains('is-flipped') || elemento.classList.contains('matched')) return;
+
+    if (audioPath) {
+        // --- NOVO: Mata o áudio anterior antes de tocar o novo ---
+        if (window.currentVocabAudio) {
+            window.currentVocabAudio.pause();
+            window.currentVocabAudio.currentTime = 0;
+        }
+
+        // Atribui à variável global para que o 'fecharJogo' consiga parar o som
+        window.currentVocabAudio = new Audio(audioPath);
+        window.currentVocabAudio.playbackRate = 0.9; 
+        window.currentVocabAudio.play().catch(error => console.error("Erro áudio:", audioPath));
+    }
+
+    elemento.classList.add('is-flipped');
+    cartasViradas.push({ id, elemento });
+
+    if (cartasViradas.length === 2) {
+        podeClicar = false;
+        setTimeout(verificarPar, 2000); 
+    }
+}
+
+function verificarPar() {
+    const [c1, c2] = cartasViradas;
+    if (c1.id === c2.id) {
+        c1.elemento.classList.add('matched');
+        c2.elemento.classList.add('matched');
+        paresEncontrados++;
+        if (paresEncontrados === window.totalParesJogo) {
+            setTimeout(() => {
+                document.getElementById('gameBoard').classList.add('hidden');
+                document.getElementById('gameWinMessage').classList.remove('hidden');
+            }, 500);
+        }
+    } else {
+        // Se errou, as cartas voltam a virar para baixo depois dos 2 segundos de espera lá de cima
+        c1.elemento.classList.remove('is-flipped');
+        c2.elemento.classList.remove('is-flipped');
+    }
+    cartasViradas = [];
+    podeClicar = true; // Só aqui o jogador pode clicar de novo
+}
+
+function voltarNiveis() {
+    document.getElementById('gameWinMessage').classList.add('hidden');
+    document.getElementById('gameLevels').classList.remove('hidden');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    // Trocamos local por session aqui para evitar o "pisco" ao reabrir o app
+    const saved = sessionStorage.getItem('lastVocabCategory');
+    const isSpecific = sessionStorage.getItem('isSpecific') === 'true';
+
+    if (saved) {
+        // Remove a classe hidden da seção principal de cards
+        const categorySection = document.getElementById('categorySection');
+        if (categorySection) categorySection.classList.remove('hidden');
+        
+        if (isSpecific) {
+            showSpecificCategory(saved);
+        } else {
+            showCategory(saved);
+        }
+    }
+});
+
+// --- LÓGICA DE NAVEGAÇÃO E INTERFACE ---
+
+// 1. Função para subir ao topo suavemente
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// 2. Controle de visibilidade do botão "Voltar ao Topo"
+window.addEventListener('scroll', function() {
+    const btnTopo = document.getElementById("backToTopBtn");
+    
+    // O botão aparece após rolar 300px para baixo
+    if (window.pageYOffset > 300) {
+        btnTopo.style.display = "flex";
+    } else {
+        btnTopo.style.display = "none";
+    }
+});
+
+
+
+// =================================================================
+// MOTOR DO POMODORO (VERSÃO FINAL BLINDADA)
+// =================================================================
+var timer = null; // Use var para garantir escopo global no NW.js
+var isRunning = false;
+var isFocus = true;
+var timeLeft = 25 * 60; 
+
+function formatTime(seconds) {
+    const min = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const sec = String(seconds % 60).padStart(2, '0');
+    return min + ":" + sec;
+}
+
+function updateDisplay() {
+    const timeDisplay = document.getElementById('pomodoro-time');
+    const title = document.getElementById('pomodoro-title');
+    const status = document.getElementById('pomodoro-status');
+    const startPauseBtn = document.getElementById('start-pause-btn');
+
+    if (!timeDisplay) {
+        console.warn("Elemento 'pomodoro-time' não encontrado.");
+        return;
+    }
+
+    const currentFormatted = formatTime(timeLeft);
+    timeDisplay.textContent = currentFormatted;
+    
+    if (isFocus) {
+        if (title) title.textContent = "Foco (" + currentFormatted + ")";
+        if (status) status.textContent = isRunning ? "Foco em andamento... 🧠" : "Pronto para estudar!";
+        if (startPauseBtn) startPauseBtn.innerHTML = isRunning ? "⏸️ Pausar" : "▶️ Iniciar Foco";
+    } else {
+        if (title) title.textContent = "Pausa (" + currentFormatted + ")";
+        if (status) status.textContent = isRunning ? "Pausa em andamento... ☕" : "Aproveite o descanso!";
+        if (startPauseBtn) startPauseBtn.innerHTML = isRunning ? "⏸️ Pausar" : "▶️ Iniciar Pausa";
+    }
+}
+
+function startPausePomodoro() {
+    if (isRunning) {
+        clearInterval(timer);
+        isRunning = false;
+    } else {
+        isRunning = true;
+        timer = setInterval(function() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateDisplay();
+            } else {
+                clearInterval(timer);
+                isRunning = false;
+                alert(isFocus ? "Foco terminado! ☕" : "Pausa terminada! 🧠");
+                if (isFocus) { setShortBreak(true); } else { setFocusTime(true); }
+            }
+        }, 1000);
+    }
+    updateDisplay();
+}
+
+function setFocusTime(start) {
+    isFocus = true;
+    timeLeft = 25 * 60;
+    clearInterval(timer);
+    isRunning = false;
+    updateDisplay();
+    if (start) startPausePomodoro();
+}
+
+function setShortBreak(start) {
+    isFocus = false;
+    timeLeft = 5 * 60;
+    clearInterval(timer);
+    isRunning = false;
+    updateDisplay();
+    if (start) startPausePomodoro();
+}
+
+function resetPomodoro() {
+    clearInterval(timer);
+    isRunning = false;
+    isFocus = true;
+    timeLeft = 25 * 60;
+    updateDisplay();
+}
+
+function togglePomodoroUI() {
+    const container = document.getElementById('pomodoro-container');
+    const toggleBtn = document.getElementById('pomodoro-toggle-btn');
+    
+    if (!container) {
+        alert("Erro técnico: O container do Pomodoro não foi encontrado no HTML.");
+        return;
+    }
+
+    if (container.classList.contains('hidden')) {
+        container.classList.remove('hidden');
+        if (toggleBtn) toggleBtn.classList.add('hidden');
+        updateDisplay();
+    } else {
+        container.classList.add('hidden');
+        if (toggleBtn) toggleBtn.classList.remove('hidden');
+    }
+}
+
+// Inicialização imediata
+resetPomodoro();
+// =================================================================
+
+// =================================================================
+// NAVEGAÇÃO ENTRE CATEGORIAS (UNIFICADA - CARROSSEL REAL)
+// =================================================================
+function navigateCategory(direction) {
+    // 1. Unificamos todas as categorias em uma única lista para navegação
+    const allGrammarKeys = Object.keys(categoryData);
+    const allSpecificKeys = Object.keys(specificCategoryData);
+    const allCategories = [...allGrammarKeys, ...allSpecificKeys];
+    
+    // 2. Descobre o índice da categoria atual na lista unificada
+    let currentIndex = allCategories.indexOf(window.currentCategory);
+    
+    if (currentIndex === -1) return;
+
+    // 3. Calcula o próximo índice (Carrossel Infinito)
+    if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % allCategories.length;
+    } else {
+        currentIndex = (currentIndex - 1 + allCategories.length) % allCategories.length;
+    }
+
+    const nextCategory = allCategories[currentIndex];
+
+    // 4. Mata o áudio antes de mudar
+    if (window.currentVocabAudio) {
+        window.currentVocabAudio.pause();
+        window.currentVocabAudio.currentTime = 0;
+    }
+
+    // 5. Verifica em qual objeto a PRÓXIMA categoria está para chamar a função correta
+    if (allGrammarKeys.includes(nextCategory)) {
+        showCategory(nextCategory);
+    } else {
+        showSpecificCategory(nextCategory);
+    }
+    
+    // Rola para o topo para começar a nova categoria do início
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+    </script>
+	
+<div id="gameModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black bg-opacity-90 overflow-y-auto">
+    <div class="bg-white w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden relative">
+        
+        <div class="gradient-bg p-4 flex justify-between items-center text-white">
+    <h3 id="gameModalTitle" class="text-xl font-bold">Desafio de Memória</h3>
+    <button onclick="voltarParaNiveis()" class="text-white hover:text-red-200 text-2xl font-bold">&times;</button>
+</div>
+
+        <div id="gameLevels" class="p-8 text-center">
+            <p class="text-gray-600 mb-6">Escolha o nível de dificuldade para praticar:</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <button onclick="iniciarJogo(1)" class="p-4 border-2 border-blue-500 rounded-xl hover:bg-blue-50 transition">
+                    <span class="block text-2xl mb-2">🥉</span>
+                    <span class="font-bold text-blue-900">Level 1</span>
+                    <span class="block text-xs text-gray-500">Inglês vs Português</span>
+                </button>
+                <button onclick="iniciarJogo(2)" class="p-4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-50 transition">
+                    <span class="block text-2xl mb-2">🥈</span>
+                    <span class="font-bold text-blue-900">Level 2</span>
+                    <span class="block text-xs text-gray-500">Inglês vs Inglês</span>
+                </button>
+                <button onclick="iniciarJogo(3)" class="p-4 border-2 border-red-500 rounded-xl hover:bg-red-50 transition">
+                    <span class="block text-2xl mb-2">🥇</span>
+                    <span class="font-bold text-blue-900">Level 3</span>
+                    <span class="block text-xs text-gray-500">Frases vs Frases</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="gameBoard" class="hidden p-2 grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-[75vh] overflow-y-auto bg-gray-50 rounded-lg">
+            </div>
+
+        <div id="gameWinMessage" class="hidden p-8 text-center">
+    <h2 class="text-3xl font-bold text-green-600 mb-2">Parabéns! 🎉</h2>
+    <p class="text-gray-600 mb-6 text-sm">Você dominou esta categoria!</p>
+    
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <button onclick="voltarParaNiveis()" 
+            class="bg-gradient-to-r from-blue-700 to-cyan-500 text-white px-5 py-2 rounded-lg text-sm font-semibold shadow-md hover:brightness-110 transition-all">
+            Outro Nível
+        </button>
+
+        <button onclick="fecharJogo()" 
+            class="bg-gradient-to-r from-red-700 to-black text-white px-5 py-2 rounded-lg text-sm font-semibold shadow-md hover:brightness-110 transition-all">
+            Sair do Jogo
+        </button>
+    </div>
+</div>
+	
+</body>
+</html>
